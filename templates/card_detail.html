@@ -3,14 +3,19 @@
 {% block title %}{{ card.meta.title }}{% endblock %}
 
 {% block left_menu %}
-    <a href="{{ url_for('index') }}" class="back-link">← Назад</a>
+    <a href="{{ url_for('index') }}" class="back-link">← Назад к списку</a>
 {% endblock %}
 
 {% block content %}
     <div class="card-detail">
         <div class="card-header">
             <h1>{{ card.meta.title }}</h1>
-            <p class="latin">{{ card.meta.latin }}</p>
+            {% if card.meta.get('latin') %}
+                <p class="latin">{{ card.meta.latin }}</p>
+            {% endif %}
+            {% if card.meta.get('base_description') %}
+                <p class="latin">{{ card.meta.base_description }}</p>
+            {% endif %}
         </div>
 
         {% if card.meta.get('image') %}
@@ -18,7 +23,63 @@
                  alt="{{ card.meta.title }}" class="card-main-image">
         {% endif %}
 
-        <div class="card-content">
+        {% if card.meta.get('description') %}
+            <div class="card-section">
+                <h2>Описание</h2>
+                <p>{{ card.meta.description }}</p>
+            </div>
+        {% endif %}
+
+        {% if card.meta.get('personality') %}
+            <div class="card-section">
+                <h2>Тип личности</h2>
+                {{ card.meta.personality|markdown|safe }}
+            </div>
+        {% endif %}
+
+        {% if card.meta.get('symptoms') %}
+            <div class="card-section">
+                <h2>Характерные симптомы</h2>
+                {{ card.meta.symptoms|markdown|safe }}
+            </div>
+        {% endif %}
+
+        {% if card.meta.get('modalities') %}
+            <div class="card-section">
+                <h2>Модальности</h2>
+                {{ card.meta.modalities|markdown|safe }}
+            </div>
+        {% endif %}
+
+        {% if card.meta.get('contraindications') %}
+            <div class="card-section">
+                <h2>Противопоказания</h2>
+                {{ card.meta.contraindications|markdown|safe }}
+            </div>
+        {% endif %}
+
+        {% if card.meta.get('dosage') %}
+            <div class="card-section">
+                <h2>Дозировка</h2>
+                {{ card.meta.dosage|markdown|safe }}
+            </div>
+        {% endif %}
+
+        {% if card.meta.get('relationships') %}
+            <div class="card-section">
+                <h2>Взаимосвязи</h2>
+                {{ card.meta.relationships|markdown|safe }}
+            </div>
+        {% endif %}
+
+        {% if card.meta.get('sources') %}
+            <div class="card-section">
+                <h2>Источники</h2>
+                {{ card.meta.sources|markdown|safe }}
+            </div>
+        {% endif %}
+
+        <div class="card-html-content">
             {{ card.html|safe }}
         </div>
     </div>

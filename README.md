@@ -2,6 +2,7 @@
 
 ```bash
 pip install flask flask-flatpages markdown
+pip install flask-markdown
 ```
 
 Запустите приложение:

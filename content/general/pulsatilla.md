@@ -1,22 +1,28 @@
-title: Pulsatilla
+---
+title: Пульсатилла
 slug: pulsatilla
 category: general
 latin: Pulsatilla pratensis
+base_description: Прострел луговой. Семейство лютиковые
+description: Основное средство при проблемах с пищеварении
 keywords: пищеварение, стресс, раздражительность
-image: Пульсатилла_в_гомеопатии.jpg
+personality: >
+  Раздражительные, нетерпеливые, амбициозные люди, 
+  склонные к злоупотреблению стимуляторами
+symptoms: >
+  - Чувствительность к свету и шуму
+  - Тошнота после еды
+modalities: >
+  Ухудшение: утром, после еды, от кофе<br>
+  Улучшение: в покое, от тепла
+contraindications: 
+dosage: 
+relationships: >
 
+sources: >
+  - Materia Medica by J.H. Clarke
+  - Руководство по гомеопатии
+  - https://homeopatia-nsk.ru/o-gomeopatii/gomeopaticheskie-preparaty-prosto-i-ponyatno/352-pulsatilla-v-gomeopatii-pulsatilla-pratensis.html
+image: pulsatilla.jpg
+---
 
-## Описание
-Прострел луговой
-Семейство лютиковые
-
-## Характерные симптомы
-- Чувствительность к свету и шуму
-- Тошнота после еды
-
-## Дозировка
-30С 3 раза в день при острых состояниях
-
-
-
-https://homeopatia-nsk.ru/o-gomeopatii/gomeopaticheskie-preparaty-prosto-i-ponyatno/352-pulsatilla-v-gomeopatii-pulsatilla-pratensis.html

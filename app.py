@@ -4,6 +4,7 @@ import markdown
 import os
 
 app = Flask(__name__)
+
 app.config['SECRET_KEY'] = 'secret'
 app.config['FLATPAGES_ROOT'] = 'content'
 app.config['FLATPAGES_EXTENSION'] = '.md'
@@ -13,6 +14,10 @@ app.config['UPLOAD_FOLDER'] = 'static/images'
 
 # Создаем папку для изображений, если ее нет
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+
+@app.template_filter('markdown')
+def markdown_filter(text):
+    return markdown.markdown(text)
 
 pages = FlatPages(app)
 
@@ -121,4 +126,5 @@ def uploaded_file(filename):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)

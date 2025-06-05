@@ -28,10 +28,17 @@
                         <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
                              alt="{{ card.meta.title }}" class="card-image">
                     {% else %}
-                        <div class="card-image-placeholder"></div>
+                        <div class="card-image-placeholder">{{ card.meta.title|first }}</div>
                     {% endif %}
-                    <h3>{{ card.meta.title }}</h3>
-                    <p class="latin">{{ card.meta.latin }}</p>
+                    <div class="card-preview-content">
+                        <h3>{{ card.meta.title }}</h3>
+                        {% if card.meta.get('base_description') %}
+                            <p class="latin">{{ card.meta.base_description }}</p>
+                        {% endif %}
+                        {% if card.meta.get('description') %}
+                            <p class="description">{{ card.meta.description|truncate(100) }}</p>
+                        {% endif %}
+                    </div>
                 </a>
             </div>
         {% endfor %}

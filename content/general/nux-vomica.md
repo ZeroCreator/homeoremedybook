@@ -2,30 +2,35 @@
 title: Нукс вомика
 slug: nux-vomica
 category: general
-base_description: Семейство Логаниевые
-description: Основное средство при проблемах с пищеварении
-keywords: пищеварение, стресс, раздражительность
-personality: >
-  Раздражительные, нетерпеливые, амбициозные люди, 
-  склонные к злоупотреблению стимуляторами
-symptoms: >
-  - Раздражительность
-  - Чувствительность к свету и шуму
-  - Тошнота после еды
+latin: Nux vomica
+base_description: Чилибуха рвотная (рвотный орех). Семейство Логаниевые 
+keywords:
+description:
+personality: |
+  Раздражительные, нетерпеливые, амбициозные люди, склонные к злоупотреблению стимуляторами
+  #### Характерные особенности:
+
+  
+  #### **Ключевые черты Nux vomica в кино и мультиках:**
+  
+  *Пример*: 
+  ---
+  
+  #### ***Вывод:***
+personality_image: 
+personality_image_caption: Типичный портрет пациента Нукс вомики
+symptoms:
+
 modalities: >
-  Ухудшение: утром, после еды, от кофе<br>
-  Улучшение: в покое, от тепла
-contraindications: Не применять при беременности без консультации
-dosage: 30С 3 раза в день при острых состояниях
+  - **Ухудшение:** утром, после еды, от кофе<br>
+  
+  - **Улучшение:** в покое, от тепла
+contraindications: 
+dosage: 
 relationships: >
-  Хорошо сочетается с: Пульсатилла, Ликоподиум<br>
-  Антидоты: Кофе, Камфора
-sources: >
+
+sources:
   - Materia Medica by J.H. Clarke
-  - Руководство по гомеопатии
   - https://homeopatia-nsk.ru/o-gomeopatii/gomeopaticheskie-preparaty-prosto-i-ponyatno/350-nuks-vomika-v-gomeopatii-nux-vomica.html
 image: nux-vomica.jpg
 ---
-
-## Подробное описание
-Полное описание препарата с деталями...

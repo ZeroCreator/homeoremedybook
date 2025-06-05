@@ -35,9 +35,6 @@
                         {% if card.meta.get('base_description') %}
                             <p class="latin">{{ card.meta.base_description }}</p>
                         {% endif %}
-                        {% if card.meta.get('description') %}
-                            <p class="description">{{ card.meta.description|truncate(100) }}</p>
-                        {% endif %}
                     </div>
                 </a>
             </div>

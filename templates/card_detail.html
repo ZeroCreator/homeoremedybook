@@ -23,60 +23,96 @@
                  alt="{{ card.meta.title }}" class="card-main-image">
         {% endif %}
 
-        {% if card.meta.get('description') %}
-            <div class="card-section">
-                <h2>Описание</h2>
-                <p>{{ card.meta.description }}</p>
+        {% macro render_section(title, content, image=None, caption=None) %}
+        <div class="card-section">
+            <h2>{{ title }}</h2>
+            {% if image %}
+            <div class="section-image-wrapper">
+                <img src="{{ url_for('static', filename='images/' + image) }}"
+                     alt="{{ title }} {{ card.meta.title }}"
+                     class="section-image">
+                {% if caption %}
+                <p class="image-caption">{{ caption }}</p>
+                {% endif %}
             </div>
-        {% endif %}
+            {% endif %}
+            <div class="section-content">
+                {% if content is string %}
+                    {{ content|markdown|safe }}
+                {% else %}
+                    <ul class="section-list">
+                        {% for item in content %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endmacro %}
 
-        {% if card.meta.get('personality') %}
-            <div class="card-section">
-                <h2>Тип личности</h2>
-                {{ card.meta.personality|markdown|safe }}
-            </div>
+        {% if card.meta.get('description') %}
+            {{ render_section(
+                'Описание',
+                card.meta.description,
+                card.meta.get('description_image'),
+                card.meta.get('description_image_caption')
+            ) }}
         {% endif %}
 
         {% if card.meta.get('symptoms') %}
-            <div class="card-section">
-                <h2>Характерные симптомы</h2>
-                {{ card.meta.symptoms|markdown|safe }}
-            </div>
+            {{ render_section(
+                'Характерные симптомы',
+                card.meta.symptoms,
+                card.meta.get('symptoms_image'),
+                card.meta.get('symptoms_image_caption')
+            ) }}
+        {% endif %}
+
+        {% if card.meta.get('personality') %}
+            {{ render_section(
+                'Тип личности',
+                card.meta.personality,
+                card.meta.get('personality_image'),
+                card.meta.get('personality_image_caption')
+            ) }}
         {% endif %}
 
         {% if card.meta.get('modalities') %}
-            <div class="card-section">
-                <h2>Модальности</h2>
-                {{ card.meta.modalities|markdown|safe }}
-            </div>
-        {% endif %}
-
-        {% if card.meta.get('contraindications') %}
-            <div class="card-section">
-                <h2>Противопоказания</h2>
-                {{ card.meta.contraindications|markdown|safe }}
-            </div>
-        {% endif %}
-
-        {% if card.meta.get('dosage') %}
-            <div class="card-section">
-                <h2>Дозировка</h2>
-                {{ card.meta.dosage|markdown|safe }}
-            </div>
-        {% endif %}
-
-        {% if card.meta.get('relationships') %}
-            <div class="card-section">
-                <h2>Взаимосвязи</h2>
-                {{ card.meta.relationships|markdown|safe }}
-            </div>
+            {{ render_section(
+                'Модальности',
+                card.meta.modalities,
+                card.meta.get('modalities_image'),
+                card.meta.get('modalities_image_caption')
+            ) }}
         {% endif %}
 
         {% if card.meta.get('sources') %}
-            <div class="card-section">
-                <h2>Источники</h2>
-                {{ card.meta.sources|markdown|safe }}
+        <div class="card-section sources-section">
+            <h2>Источники</h2>
+
+            {% if card.meta.get('sources_image') %}
+            <div class="section-image-wrapper">
+                <img src="{{ url_for('static', filename='images/' + card.meta.sources_image) }}"
+                     alt="Источники {{ card.meta.title }}"
+                     class="section-image">
+                {% if card.meta.get('sources_image_caption') %}
+                <p class="image-caption">{{ card.meta.sources_image_caption }}</p>
+                {% endif %}
             </div>
+            {% endif %}
+
+            <ul class="section-list">
+                {% for source in card.meta.sources %}
+                    <li>
+                        {% if source.startswith('http') %}
+                            <a href="{{ source }}" target="_blank" rel="noopener">{{ source }}</a>
+                        {% else %}
+                            {{ source }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
         {% endif %}
 
         <div class="card-html-content">

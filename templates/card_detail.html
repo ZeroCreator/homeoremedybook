@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ card.meta.title }}{% endblock %}
+
+{% block left_menu %}
+    <a href="{{ url_for('index') }}" class="back-link">← Назад</a>
+{% endblock %}
+
+{% block content %}
+    <div class="card-detail">
+        <div class="card-header">
+            <h1>{{ card.meta.title }}</h1>
+            <p class="latin">{{ card.meta.latin }}</p>
+        </div>
+
+        {% if card.meta.get('image') %}
+            <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
+                 alt="{{ card.meta.title }}" class="card-main-image">
+        {% endif %}
+
+        <div class="card-content">
+            {{ card.html|safe }}
+        </div>
+    </div>
+{% endblock %}

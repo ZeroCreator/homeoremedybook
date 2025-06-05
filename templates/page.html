@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.meta.title }}{% endblock %}
+
+{% block sidebar %}
+    <div class="sidebar">
+        {% if page.meta.type == 'drug' %}
+            <a href="/">← Все препараты</a>
+            <h3>Препараты</h3>
+        {% else %}
+            <a href="/acute-cases">← Все случаи</a>
+            <h3>Острые случаи</h3>
+        {% endif %}
+
+        <ul>
+            {% for item in pages %}
+                {% if item.meta.type == page.meta.type %}
+                    <li><a href="/{{ item.path }}" {% if item.path == page.path %}style="font-weight:bold"{% endif %}>
+                        {{ item.meta.title }}
+                    </a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ page.meta.title }}</h1>
+    <div>{{ page.html|safe }}</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Homeo Remedy Book{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="banner">
+        <h1>Homeo Remedy Book</h1>
+    </header>
+
+    <nav class="horizontal-menu">
+        <a href="{{ url_for('index') }}">Главная</a>
+        <a href="{{ url_for('acute_cases') }}">Острые случаи</a>
+        <a href="{{ url_for('articles') }}">Статьи</a>
+    </nav>
+
+    <div class="container">
+        <aside class="left-menu">
+            {% block left_menu %}{% endblock %}
+        </aside>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

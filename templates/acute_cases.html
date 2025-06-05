@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block body_class %}acute-page{% endblock %}
+
+{% block title %}Острые случаи{% endblock %}
+
+{% block left_menu %}
+    {% for case in acute_cases %}
+        <a href="{{ url_for('acute_case_detail', slug=case.slug) }}">{{ case.name }}</a>
+    {% endfor %}
+{% endblock %}
+
+
+{% block content %}
+    <h1>Острые случаи</h1>
+
+    <div class="cards-grid">
+        {% for case in acute_cases %}
+            <div class="card-preview">
+                <a href="{{ url_for('acute_case_detail', slug=case.slug) }}">
+                    {% if case.image %}
+                        <img src="{{ url_for('static', filename='images/' + case.image) }}"
+                             alt="{{ case.name }}" class="card-image">
+                    {% else %}
+                        <div class="card-image-placeholder"></div>
+                    {% endif %}
+                    <h3>{{ case.name }}</h3>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

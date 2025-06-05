@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if show_category_title %}
+    <h1>{{ category.name }}</h1>
+{% endif %}
+
+{% if subcategories %}
+<div class="subcategories">
+    <h2>Подкатегории:</h2>
+    <ul>
+        {% for subcat in subcategories %}
+        <li><a href="{{ url_for('category_view', slug=subcat.slug) }}">{{ subcat.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<div class="cards-container">
+    {% for card in cards %}
+    <div class="product-card">
+        <h2>{{ card.title }}</h2>
+        {% if card.base_description %}<p class="latin-name">{{ card.base_description }}</p>{% endif %}
+        <div class="card-content">
+            {{ card.description|default('', true) }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

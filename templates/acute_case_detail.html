@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block body_class %}acute-page{% endblock %}
+
+{% block title %}{{ case.name }}{% endblock %}
+
+{% block left_menu %}
+    <a href="{{ url_for('acute_cases') }}" class="back-link">← Назад</a>
+{% endblock %}
+
+{% block content %}
+    <div class="card-detail">
+        <div class="card-header">
+            <h1>{{ case.name }}</h1>
+        </div>
+
+        {% if case.image %}
+            <img src="{{ url_for('static', filename='images/' + case.image) }}"
+                 alt="{{ case.name }}" class="card-main-image">
+        {% endif %}
+
+        <div class="card-content">
+            {{ case.content|safe }}
+        </div>
+    </div>
+{% endblock %}

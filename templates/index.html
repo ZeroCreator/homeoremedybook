@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Препараты{% endblock %}
+
+{% block left_menu %}
+    {% for card in cards %}
+        <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">{{ card.meta.title }}</a>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <h1>Справочник препаратов</h1>
+
+    <form class="search" method="get">
+        <input type="text" name="keywords" placeholder="Поиск препаратов..." value="{{ keyword_filter }}">
+        <button type="submit">Найти</button>
+    </form>
+
+    {% if keyword_filter %}
+        <p>Результаты поиска для "{{ keyword_filter }}":</p>
+    {% endif %}
+
+    <div class="cards-grid">
+        {% for card in cards %}
+            <div class="card-preview">
+                <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">
+                    {% if card.meta.get('image') %}
+                        <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
+                             alt="{{ card.meta.title }}" class="card-image">
+                    {% else %}
+                        <div class="card-image-placeholder"></div>
+                    {% endif %}
+                    <h3>{{ card.meta.title }}</h3>
+                    <p class="latin">{{ card.meta.latin }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

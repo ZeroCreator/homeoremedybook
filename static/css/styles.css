@@ -1,0 +1,266 @@
+:root {
+    --primary: #8c9e7e;      /* Пастельный зелёный */
+    --secondary: #d1d9d0;    /* Светло-серый */
+    --accent: #6b8e7e;       /* Темно-зелёный */
+    --background: #f5f7f3;   /* Светлый фон */
+}
+
+body {
+    background-color: var(--background);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    background-color: var(--primary);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.horizontal-menu {
+    background-color: var(--accent);
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.horizontal-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.horizontal-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.container {
+    display: flex;
+    min-height: calc(100vh - 150px);
+}
+
+.left-menu {
+    width: 250px;
+    padding: 15px 0;
+    overflow-y: auto;
+}
+
+.menu-category {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+
+.menu-category h3 {
+    margin-top: 0;
+    color: #333;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.left-menu a {
+    display: block;
+    padding: 8px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.left-menu a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+}
+
+/* Стили для карточек на главной */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.product-card-preview {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.product-card-preview:hover {
+    transform: translateY(-3px);
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Стили для детальных страниц */
+.card-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.acute-case-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Общие стили карточек */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.card-preview {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-preview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-image-placeholder {
+    width: 100%;
+    height: 180px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.card-preview h3 {
+    padding: 15px;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.card-preview .latin {
+    padding: 0 15px 15px;
+    color: #666;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Стили для страницы товара */
+.card-detail {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card-main-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.back-link {
+    display: block;
+    margin-bottom: 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    margin-top: 20px;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Основные стили левого меню */
+.left-menu {
+    width: 250px;
+    padding: 20px;
+    background-color: #d1d9d0;
+    overflow-y: auto;
+    height: calc(100vh - 120px);
+    position: sticky;
+    top: 60px;
+}
+
+.left-menu a {
+    display: block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    color: #333;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.left-menu a:hover {
+    background-color: rgba(255,255,255,0.9);
+    transform: translateX(5px);
+}
+
+.left-menu .back-link {
+    font-weight: bold;
+    background-color: transparent;
+    padding-left: 0;
+}
+
+.left-menu .back-link:hover {
+    background-color: transparent;
+    text-decoration: underline;
+    transform: none;
+}
+
+/* Стили для страницы острых случаев */
+.acute-page .left-menu {
+    background-color: #8c9e7e;
+}
+
+.acute-page .left-menu a {
+    color: #fff;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.acute-page .left-menu a:hover {
+    background-color: rgba(0,0,0,0.3);
+    color: #fff;
+}

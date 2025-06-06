@@ -105,21 +105,30 @@
             ) }}
         {% endif %}
 
-        {% if card.meta.get('personality') %}
-            {{ render_section(
-                'Тип личности',
-                card.meta.personality,
-                card.meta.get('personality_images'),
-                card.meta.get('personality_captions')
-            ) }}
-        {% endif %}
-
         {% if card.meta.get('modalities') %}
             {{ render_section(
                 'Модальности',
                 card.meta.modalities,
                 card.meta.get('modalities_images'),
                 card.meta.get('modalities_captions')
+            ) }}
+        {% endif %}
+
+        {% if card.meta.get('keywords') %}
+            {{ render_section(
+                'Ключи',
+                card.meta.keywords,
+                card.meta.get('keywords_images'),
+                card.meta.get('keywords_captions')
+            ) }}
+        {% endif %}
+
+        {% if card.meta.get('personality') %}
+            {{ render_section(
+                'Тип личности',
+                card.meta.personality,
+                card.meta.get('personality_images'),
+                card.meta.get('personality_captions')
             ) }}
         {% endif %}
 

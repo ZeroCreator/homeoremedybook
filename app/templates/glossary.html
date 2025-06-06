@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Справочник{% endblock %}
+
+{% block left_menu %}
+    {# No left menu for directory page #}
+{% endblock %}
+
+{% block content %}
+    <h1>Справочник терминов</h1>
+
+    <div class="glossary-container">
+        {% for term, data in terms.items() %}
+            <div class="glossary-term">
+                <button class="glossary-term-header" onclick="toggleTerm(this)">
+                    {{ term }}
+                </button>
+                <div class="glossary-term-content" style="display: none;">
+                    {{ data.content|safe }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function toggleTerm(button) {
+            const content = button.nextElementSibling;
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        }
+    </script>
+{% endblock %}

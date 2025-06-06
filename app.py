@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, send_from_directory
 from flask_flatpages import FlatPages
+from collections import defaultdict
 import markdown
 import os
 
@@ -56,6 +57,52 @@ def get_cards_by_category(category_slug):
         key=lambda p: p.meta['title']
     )
 
+
+def get_cards_by_miasm():
+    miasms = defaultdict(list)
+    for page in pages:
+        if 'miasm' in page.meta:
+            miasms[page.meta['miasm']].append(page)
+    return miasms
+
+
+def get_cards_by_kingdom():
+    kingdoms = defaultdict(list)
+    for page in pages:
+        if 'kingdom' in page.meta:
+            kingdoms[page.meta['kingdom']].append(page)
+    return kingdoms
+
+
+def load_glossary_terms():
+    glossary = {}
+    glossary_folder = 'content/glossary'
+    # Create categories if it doesn't exist
+    os.makedirs(glossary_folder, exist_ok=True)
+
+    for filename in os.listdir(glossary_folder):
+        if filename.endswith('.md'):
+            with open(os.path.join(glossary_folder, filename), 'r', encoding='utf-8') as f:
+                content = f.read()
+                parts = content.split('---\n')
+                if len(parts) >= 3:
+                    meta_part = parts[1]
+                    content_part = parts[2]
+                    meta = {}
+                    for line in meta_part.split('\n'):
+                        if ':' in line:
+                            key, value = line.split(':', 1)
+                            meta[key.strip()] = value.strip()
+
+                    term = meta.get('term', filename.replace('.md', ''))
+                    glossary[term] = {
+                        'term': term,
+                        'content': markdown.markdown(content_part),
+                        'slug': filename.replace('.md', '')
+                    }
+    return glossary
+
+
 @app.route('/')
 def index():
     keyword = request.args.get('keywords', '').lower()
@@ -102,22 +149,22 @@ def card_detail(slug):
                          categories=CATEGORIES
                          )
 
-@app.route('/category/<slug>')
-def category(slug):
-    category = next((c for c in CATEGORIES if c['slug'] == slug), None)
-    if not category:
-        return "Category not found", 404
-
-    category_pages = [p for p in pages if p.meta.get('category') == slug]
+@app.route('/category')
+def category():
+    miasms = get_cards_by_miasm()
+    kingdoms = get_cards_by_kingdom()
     return render_template('category.html',
-        category=category,
-        cards=category_pages,
-        show_category_title=(slug != 'general')  # Показывать заголовок только если это не главная категория
-    )
+                         miasms=miasms,
+                         kingdoms=kingdoms,
+                         menu_color=CATEGORIES[0]['color'])
 
-@app.route('/articles')
-def articles():
-    return render_template('articles.html')
+@app.route('/directory')
+def directory():  # Make sure this function name matches
+    terms = load_glossary_terms()
+    return render_template('glossary.html',
+                         terms=terms,
+                         menu_color=CATEGORIES[0]['color'])
+
 
 
 @app.route('/static/images/<filename>')

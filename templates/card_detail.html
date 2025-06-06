@@ -21,21 +21,58 @@
         {% if card.meta.get('image') %}
             <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
                  alt="{{ card.meta.title }}" class="card-main-image">
+            <div class="card-categories-container">
+                <div class="card-categories">
+                    {% if card.meta.get('miasm') %}
+                        <div class="category-item">
+                            <span class="category-label">Миазм:</span>
+                            <span class="category-value">{{ card.meta.miasm }}</span>
+                        </div>
+                    {% endif %}
+                    {% if card.meta.get('kingdom') %}
+                        <div class="category-item">
+                            <span class="category-label">Царство:</span>
+                            <span class="category-value">{{ card.meta.kingdom }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         {% endif %}
 
-        {% macro render_section(title, content, image=None, caption=None) %}
+        {% macro render_section(title, content, images=None, captions=None) %}
         <div class="card-section">
             <h2>{{ title }}</h2>
-            {% if image %}
-            <div class="section-image-wrapper">
-                <img src="{{ url_for('static', filename='images/' + image) }}"
-                     alt="{{ title }} {{ card.meta.title }}"
-                     class="section-image">
-                {% if caption %}
-                <p class="image-caption">{{ caption }}</p>
+
+            {% if images %}
+                {% if images is string or images|length == 1 %}
+                {# Одна картинка - отображаем по центру #}
+                <div class="section-image-wrapper single-image">
+                    <img src="{{ url_for('static', filename='images/' + (images if images is string else images[0])) }}"
+                         alt="{{ title }} {{ card.meta.title }}"
+                         class="section-image">
+                    {% if captions and (captions is string or captions|length >= 1) %}
+                    <p class="image-caption">
+                        {{ captions if captions is string else captions[0] }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% else %}
+                {# Две картинки - отображаем рядом #}
+                <div class="section-images-wrapper dual-images">
+                    {% for img in images[:2] %}
+                    <div class="dual-image-container">
+                        <img src="{{ url_for('static', filename='images/' + img) }}"
+                             alt="{{ title }} {{ card.meta.title }}"
+                             class="section-image">
+                        {% if captions and captions|length > loop.index0 %}
+                        <p class="image-caption">{{ captions[loop.index0] }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
                 {% endif %}
-            </div>
             {% endif %}
+
             <div class="section-content">
                 {% if content is string %}
                     {{ content|markdown|safe }}
@@ -54,8 +91,8 @@
             {{ render_section(
                 'Описание',
                 card.meta.description,
-                card.meta.get('description_image'),
-                card.meta.get('description_image_caption')
+                card.meta.get('description_images'),
+                card.meta.get('description_captions')
             ) }}
         {% endif %}
 
@@ -63,8 +100,8 @@
             {{ render_section(
                 'Характерные симптомы',
                 card.meta.symptoms,
-                card.meta.get('symptoms_image'),
-                card.meta.get('symptoms_image_caption')
+                card.meta.get('symptoms_images'),
+                card.meta.get('symptoms_captions')
             ) }}
         {% endif %}
 
@@ -72,8 +109,8 @@
             {{ render_section(
                 'Тип личности',
                 card.meta.personality,
-                card.meta.get('personality_image'),
-                card.meta.get('personality_image_caption')
+                card.meta.get('personality_images'),
+                card.meta.get('personality_captions')
             ) }}
         {% endif %}
 
@@ -81,8 +118,8 @@
             {{ render_section(
                 'Модальности',
                 card.meta.modalities,
-                card.meta.get('modalities_image'),
-                card.meta.get('modalities_image_caption')
+                card.meta.get('modalities_images'),
+                card.meta.get('modalities_captions')
             ) }}
         {% endif %}
 
@@ -104,10 +141,10 @@
             <ul class="section-list">
                 {% for source in card.meta.sources %}
                     <li>
-                        {% if source.startswith('http') %}
-                            <a href="{{ source }}" target="_blank" rel="noopener">{{ source }}</a>
+                        {% if source.url %}
+                            <a href="{{ source.url }}">{{ source.text }}</a>
                         {% else %}
-                            {{ source }}
+                            {{ source.text }}
                         {% endif %}
                     </li>
                 {% endfor %}

@@ -3,15 +3,17 @@
 {% block title %}Справочник{% endblock %}
 
 {% block left_menu %}
-    {# No left menu for directory page #}
+    {% for term, data in terms.items() %}
+        <a href="#{{ data.slug }}">{{ term }}</a>
+    {% endfor %}
 {% endblock %}
 
 {% block content %}
-    <h1>Справочник терминов</h1>
+    <h1>Глоссарий терминов</h1>
 
     <div class="glossary-container">
         {% for term, data in terms.items() %}
-            <div class="glossary-term">
+            <div class="glossary-term" id="{{ data.slug }}">
                 <button class="glossary-term-header" onclick="toggleTerm(this)">
                     {{ term }}
                 </button>
@@ -25,11 +27,18 @@
     <script>
         function toggleTerm(button) {
             const content = button.nextElementSibling;
-            if (content.style.display === 'none') {
-                content.style.display = 'block';
-            } else {
-                content.style.display = 'none';
-            }
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
         }
+
+        // Автоматически раскрываем термин при переходе по якорю
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const term = document.querySelector(window.location.hash);
+                if (term) {
+                    const content = term.querySelector('.glossary-term-content');
+                    if (content) content.style.display = 'block';
+                }
+            }
+        });
     </script>
 {% endblock %}

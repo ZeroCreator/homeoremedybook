@@ -592,3 +592,36 @@ body {
     background-color: #f9f9f9;
     border-left: 3px solid #8c9e7e;
 }
+
+
+
+/* Стили для категорий */
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.badge {
+    background: #8c9e7e;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 0.8em;
+}
+
+.category-menu {
+    list-style: none;
+    padding-left: 0;
+}
+
+.category-menu li {
+    margin-bottom: 5px;
+}
+
+.section-title {
+    border-bottom: 2px solid #d1d9d0;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}

@@ -1,4 +1,5 @@
 from flask import render_template, request, send_from_directory
+from slugify import slugify
 from app import app, pages
 from app.models import (
     CATEGORIES,
@@ -9,7 +10,12 @@ from app.models import (
     load_glossary_terms
 )
 
-from flask import current_app
+
+@app.template_filter('slugify')
+def slugify_filter(s):
+    return slugify(str(s))
+
+
 @app.route('/')
 def index():
     keyword = request.args.get('keywords', '').lower()
@@ -51,26 +57,31 @@ def card_detail(slug):
     if not card:
         return "Card not found", 404
 
-    return render_template('card_detail.html',
-                         card=card,
-                         categories=CATEGORIES
-                         )
+    return render_template(
+        'card_detail.html',
+        card=card,
+        categories=CATEGORIES
+    )
 
 @app.route('/category')
 def category():
     miasms = get_cards_by_miasm()
     kingdoms = get_cards_by_kingdom()
-    return render_template('category.html',
-                         miasms=miasms,
-                         kingdoms=kingdoms,
-                         menu_color=CATEGORIES[0]['color'])
+    return render_template(
+        'category.html',
+        miasms=miasms,
+        kingdoms=kingdoms,
+        menu_color=CATEGORIES[0]['color']
+    )
 
 @app.route('/glossary')
 def glossary():
     terms = load_glossary_terms()
-    return render_template('glossary.html',
-                         terms=terms,
-                         menu_color=CATEGORIES[0]['color'])
+    return render_template(
+        'glossary.html',
+        terms=terms,
+        menu_color=CATEGORIES[0]['color']
+    )
 
 
 @app.route('/static/images/<filename>')

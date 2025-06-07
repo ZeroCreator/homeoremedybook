@@ -1,0 +1,16 @@
+<div class="card-preview">
+    <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">
+        {% if card.meta.get('image') %}
+            <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
+                 alt="{{ card.meta.title }}" class="card-image">
+        {% else %}
+            <div class="card-image-placeholder">{{ card.meta.title|first }}</div>
+        {% endif %}
+        <div class="card-preview-content">
+            <h4>{{ card.meta.title }}</h4>
+            {% if card.meta.get('base_description') %}
+                <p class="latin">{{ card.meta.base_description }}</p>
+            {% endif %}
+        </div>
+    </a>
+</div>

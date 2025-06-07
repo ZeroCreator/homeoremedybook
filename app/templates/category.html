@@ -5,18 +5,18 @@
 {% block left_menu %}
     <div class="left-menu-section">
         <h3>Миазмы</h3>
-        <ul>
-            {% for miasm, cards in miasms.items() %}
-                <li><a href="#miasm-{{ miasm }}">{{ miasm }}</a></li>
+        <ul class="category-menu">
+            {% for miasm in miasms.keys() %}
+                <li><a href="#miasm-{{ miasm|lower|replace(' ', '-') }}">{{ miasm }}</a></li>
             {% endfor %}
         </ul>
     </div>
 
     <div class="left-menu-section">
-        <h3>Царства</h3>
-        <ul>
-            {% for kingdom, cards in kingdoms.items() %}
-                <li><a href="#kingdom-{{ kingdom }}">{{ kingdom }}</a></li>
+        <h3>Типы</h3>
+        <ul class="category-menu">
+            {% for kingdom in kingdoms.keys() %}
+                <li><a href="#type-{{ kingdom|lower|replace(' ', '-') }}">{{ kingdom }}</a></li>
             {% endfor %}
         </ul>
     </div>
@@ -26,10 +26,13 @@
     <h1>Категории препаратов</h1>
 
     <section class="category-section">
-        <h2>Миазмы</h2>
+        <h2 class="section-title">По миазмам</h2>
         {% for miasm, cards in miasms.items() %}
-            <div class="category-group" id="miasm-{{ miasm }}">
-                <h3>{{ miasm }}</h3>
+            <div class="category-group" id="miasm-{{ miasm|lower|replace(' ', '-') }}">
+                <div class="category-header">
+                    <h3>{{ miasm }}</h3>
+                    <span class="badge">{{ cards|length }}</span>
+                </div>
                 <div class="cards-grid">
                     {% for card in cards %}
                         <div class="card-preview">
@@ -55,10 +58,13 @@
     </section>
 
     <section class="category-section">
-        <h2>Царства</h2>
+        <h2 class="section-title">По типам</h2>
         {% for kingdom, cards in kingdoms.items() %}
-            <div class="category-group" id="kingdom-{{ kingdom }}">
-                <h3>{{ kingdom }}</h3>
+            <div class="category-group" id="type-{{ kingdom|lower|replace(' ', '-') }}">
+                <div class="category-header">
+                    <h3>{{ kingdom }}</h3>
+                    <span class="badge">{{ cards|length }}</span>
+                </div>
                 <div class="cards-grid">
                     {% for card in cards %}
                         <div class="card-preview">

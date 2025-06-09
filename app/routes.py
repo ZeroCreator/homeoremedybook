@@ -1,19 +1,12 @@
 from flask import render_template, request, send_from_directory
-from slugify import slugify
 from app import app, pages
 from app.models import (
     CATEGORIES,
     load_acute_cases,
     get_cards_by_category,
-    get_cards_by_miasm,
-    get_cards_by_kingdom,
-    load_glossary_terms
+    load_category,
+    load_glossary_terms,
 )
-
-
-@app.template_filter('slugify')
-def slugify_filter(s):
-    return slugify(str(s))
 
 
 @app.route('/')
@@ -31,6 +24,18 @@ def index():
                          cards=general_cards,
                          keyword_filter=keyword,
                          menu_color=CATEGORIES[0]['color'])
+
+@app.route('/card/<path:slug>')
+def card_detail(slug):
+    card = next((p for p in pages if p.meta.get('slug') == slug), None)
+    if not card:
+        return "Card not found", 404
+
+    return render_template(
+        'card_detail.html',
+        card=card,
+        categories=CATEGORIES
+    )
 
 @app.route('/acute_cases')
 def acute_cases():
@@ -51,28 +56,34 @@ def acute_case_detail(slug):
                            case=case,
                            menu_color=CATEGORIES[1]['color'])
 
-@app.route('/card/<path:slug>')
-def card_detail(slug):
-    card = next((p for p in pages if p.meta.get('slug') == slug), None)
-    if not card:
-        return "Card not found", 404
-
-    return render_template(
-        'card_detail.html',
-        card=card,
-        categories=CATEGORIES
-    )
 
 @app.route('/category')
 def category():
-    miasms = get_cards_by_miasm()
-    kingdoms = get_cards_by_kingdom()
+    categories = load_category()
     return render_template(
         'category.html',
-        miasms=miasms,
-        kingdoms=kingdoms,
-        menu_color=CATEGORIES[0]['color']
+        types=categories['types'],
+        miasms=categories['miasms'],
+        menu_color=CATEGORIES[2]['color']
     )
+
+
+@app.route('/category/<slug>')
+def category_detail(slug):
+    categories = load_category()
+    # Ищем в обоих подкатегориях
+    all_items = categories['types'] + categories['miasms']
+    item = next((item for item in all_items if item['slug'] == slug), None)
+
+    if not item:
+        return "Item not found", 404
+
+    return render_template(
+        'category_detail.html',
+        category=item,
+        menu_color=CATEGORIES[2]['color']
+    )
+
 
 @app.route('/glossary')
 def glossary():

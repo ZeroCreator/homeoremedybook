@@ -10,7 +10,8 @@
           "app": "app.app"
         },
         "installCommand": "pip install -r requirements.txt",
-        "startCommand": "gunicorn --bind :$$PORT wsgi:application"
+        "startCommand": "gunicorn --bind :$$PORT wsgi:application",
+        "rewrites": [{ "source": "/(.*)", "destination": "/" }]
       }
     },
     {

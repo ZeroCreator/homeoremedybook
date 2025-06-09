@@ -1,16 +1,26 @@
-<div class="card-preview">
-    <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">
-        {% if card.meta.get('image') %}
-            <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
-                 alt="{{ card.meta.title }}" class="card-image">
-        {% else %}
-            <div class="card-image-placeholder">{{ card.meta.title|first }}</div>
-        {% endif %}
-        <div class="card-preview-content">
-            <h4>{{ card.meta.title }}</h4>
-            {% if card.meta.get('base_description') %}
-                <p class="latin">{{ card.meta.base_description }}</p>
-            {% endif %}
+{% extends "base.html" %}
+
+{% block body_class %}category-page{% endblock %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block left_menu %}
+    <a href="{{ url_for('categories') }}" class="back-link">← Назад</a>
+{% endblock %}
+
+{% block content %}
+    <div class="card-detail">
+        <div class="card-header">
+            <h1>{{ category.name }}</h1>
         </div>
-    </a>
-</div>
+
+        {% if category.image %}
+            <img src="{{ url_for('static', filename='images/' + category.image) }}"
+                 alt="{{ category.name }}" class="card-main-image">
+        {% endif %}
+
+        <div class="card-content">
+            {{ category.content|safe }}
+        </div>
+    </div>
+{% endblock %}

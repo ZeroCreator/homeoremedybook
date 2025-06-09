@@ -8,6 +8,7 @@ class Config:
     FLATPAGES_EXTENSION = '.md'
     FLATPAGES_MARKDOWN_EXTENSIONS = ['fenced_code', 'tables']
     ACUTE_CASES_FOLDER = os.path.join(BASE_DIR, 'homeoremedybook', 'app', 'content', 'acute_cases')
+    CATEGORY_FOLDER = os.path.join(BASE_DIR, 'homeoremedybook', 'app', 'content', 'categories')
     UPLOAD_FOLDER = 'static/images'
 
     @staticmethod

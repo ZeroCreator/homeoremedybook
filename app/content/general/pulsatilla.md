@@ -124,7 +124,6 @@ personality_captions:
   - Белоснежка
   - Настенька из "Морозко"
 sources:
-  - text: Materia Medica by J.H. Clarke
   - text: Сайт Новосибирского гомеопатического центра
     url: https://homeopatia-nsk.ru/o-gomeopatii/gomeopaticheskie-preparaty-prosto-i-ponyatno/352-pulsatilla-v-gomeopatii-pulsatilla-pratensis.html
 ---

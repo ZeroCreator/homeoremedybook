@@ -1,91 +1,59 @@
 {% extends "base.html" %}
 
+{% block body_class %}category-page{% endblock %}
+
 {% block title %}Категории{% endblock %}
 
 {% block left_menu %}
-    <div class="left-menu-section">
-        <h3>Миазмы</h3>
-        <ul class="category-menu">
-            {% for miasm in miasms.keys() %}
-                <li><a href="#miasm-{{ miasm|lower|replace(' ', '-') }}">{{ miasm }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
+    <h3>Типы (царства)</h3>
+    {% for type in types %}
+        <a href="{{ url_for('category_detail', slug=type.slug) }}">{{ type.name }}</a>
+    {% endfor %}
 
-    <div class="left-menu-section">
-        <h3>Типы</h3>
-        <ul class="category-menu">
-            {% for kingdom in kingdoms.keys() %}
-                <li><a href="#type-{{ kingdom|lower|replace(' ', '-') }}">{{ kingdom }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
+    <h3>Миазмы</h3>
+    {% for miasm in miasms %}
+        <a href="{{ url_for('category_detail', slug=miasm.slug) }}">{{ miasm.name }}</a>
+    {% endfor %}
 {% endblock %}
 
 {% block content %}
-    <h1>Категории препаратов</h1>
+    <h1>Категории</h1>
 
     <section class="category-section">
-        <h2 class="section-title">По миазмам</h2>
-        {% for miasm, cards in miasms.items() %}
-            <div class="category-group" id="miasm-{{ miasm|lower|replace(' ', '-') }}">
-                <div class="category-header">
-                    <h3>{{ miasm }}</h3>
-                    <span class="badge">{{ cards|length }}</span>
+        <h2>Типы (царства)</h2>
+        <div class="cards-grid">
+            {% for type in types %}
+                <div class="card-preview">
+                    <a href="{{ url_for('category_detail', slug=type.slug) }}">
+                        {% if type.image %}
+                            <img src="{{ url_for('static', filename='images/' + type.image) }}"
+                                 alt="{{ type.name }}" class="card-image">
+                        {% else %}
+                            <div class="card-image-placeholder"></div>
+                        {% endif %}
+                        <h3>{{ type.name }}</h3>
+                    </a>
                 </div>
-                <div class="cards-grid">
-                    {% for card in cards %}
-                        <div class="card-preview">
-                            <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">
-                                {% if card.meta.get('image') %}
-                                    <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
-                                         alt="{{ card.meta.title }}" class="card-image">
-                                {% else %}
-                                    <div class="card-image-placeholder">{{ card.meta.title|first }}</div>
-                                {% endif %}
-                                <div class="card-preview-content">
-                                    <h4>{{ card.meta.title }}</h4>
-                                    {% if card.meta.get('base_description') %}
-                                        <p class="latin">{{ card.meta.base_description }}</p>
-                                    {% endif %}
-                                </div>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </section>
 
     <section class="category-section">
-        <h2 class="section-title">По типам</h2>
-        {% for kingdom, cards in kingdoms.items() %}
-            <div class="category-group" id="type-{{ kingdom|lower|replace(' ', '-') }}">
-                <div class="category-header">
-                    <h3>{{ kingdom }}</h3>
-                    <span class="badge">{{ cards|length }}</span>
+        <h2>Миазмы</h2>
+        <div class="cards-grid">
+            {% for miasm in miasms %}
+                <div class="card-preview">
+                    <a href="{{ url_for('category_detail', slug=miasm.slug) }}">
+                        {% if miasm.image %}
+                            <img src="{{ url_for('static', filename='images/' + miasm.image) }}"
+                                 alt="{{ miasm.name }}" class="card-image">
+                        {% else %}
+                            <div class="card-image-placeholder"></div>
+                        {% endif %}
+                        <h3>{{ miasm.name }}</h3>
+                    </a>
                 </div>
-                <div class="cards-grid">
-                    {% for card in cards %}
-                        <div class="card-preview">
-                            <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">
-                                {% if card.meta.get('image') %}
-                                    <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
-                                         alt="{{ card.meta.title }}" class="card-image">
-                                {% else %}
-                                    <div class="card-image-placeholder">{{ card.meta.title|first }}</div>
-                                {% endif %}
-                                <div class="card-preview-content">
-                                    <h4>{{ card.meta.title }}</h4>
-                                    {% if card.meta.get('base_description') %}
-                                        <p class="latin">{{ card.meta.base_description }}</p>
-                                    {% endif %}
-                                </div>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </section>
 {% endblock %}

@@ -10,11 +10,11 @@
     <div class="card-detail">
         <div class="card-header">
             <h1>{{ card.meta.title }}</h1>
-            {% if card.meta.get('latin') %}
-                <p class="latin">{{ card.meta.latin }}</p>
+            {% if card.meta.get('cirillic') %}
+                <p class="cirillic">{{ card.meta.cirillic }}</p>
             {% endif %}
             {% if card.meta.get('base_description') %}
-                <p class="latin">{{ card.meta.base_description }}</p>
+                <p class="cirillic">{{ card.meta.base_description }}</p>
             {% endif %}
         </div>
 

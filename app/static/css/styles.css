@@ -170,7 +170,7 @@ body {
     font-size: 1.1rem;
 }
 
-.card-preview .latin {
+.card-preview .cirillic {
     padding: 0 15px 15px;
     color: #666;
     font-style: italic;
@@ -283,7 +283,7 @@ body {
     margin-bottom: 5px;
 }
 
-.card-header .latin {
+.card-header .cirillic {
     font-style: italic;
     color: #7f8c8d;
     font-size: 1.1rem;

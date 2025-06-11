@@ -1,26 +1,134 @@
 {% extends "base.html" %}
 
-{% block body_class %}category-page{% endblock %}
-
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}{{ category.title }}{% endblock %}
 
 {% block left_menu %}
-    <a href="{{ url_for('categories') }}" class="back-link">← Назад</a>
+    <a href="{{ url_for('category') }}" class="back-link">← Назад к категориям</a>
 {% endblock %}
 
 {% block content %}
     <div class="card-detail">
+        <!-- Заголовок -->
         <div class="card-header">
-            <h1>{{ category.name }}</h1>
+            <h1>{{ category.title }}</h1>
+            {% if category.meta.get('cirillic') %}
+                <p class="cirillic">{{ category.meta.cirillic }}</p>
+            {% endif %}
         </div>
 
-        {% if category.image %}
-            <img src="{{ url_for('static', filename='images/' + category.image) }}"
-                 alt="{{ category.name }}" class="card-main-image">
+        {% if category.meta.get('image') %}
+            <img src="{{ url_for('static', filename='images/' + category.meta.image) }}"
+                 alt="{{ category.title }}" class="card-main-image">
         {% endif %}
 
-        <div class="card-content">
-            {{ category.content|safe }}
+        {% macro render_section(title, content, images=None, captions=None) %}
+        <div class="card-section">
+            <h2>{{ title }}</h2>
+
+            {% if images %}
+                {% if images is string or images|length == 1 %}
+                {# Одна картинка - отображаем по центру #}
+                <div class="section-image-wrapper single-image">
+                    <img src="{{ url_for('static', filename='images/' + (images if images is string else images[0])) }}"
+                         alt="{{ title }} {{ category.title }}"
+                         class="section-image">
+                    {% if captions and (captions is string or captions|length >= 1) %}
+                    <p class="image-caption">
+                        {{ captions if captions is string else captions[0] }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% else %}
+                {# Две картинки - отображаем рядом #}
+                <div class="section-images-wrapper dual-images">
+                    {% for img in images[:2] %}
+                    <div class="dual-image-container">
+                        <img src="{{ url_for('static', filename='images/' + img) }}"
+                             alt="{{ title }} {{ category.title }}"
+                             class="section-image">
+                        {% if captions and captions|length > loop.index0 %}
+                        <p class="image-caption">{{ captions[loop.index0] }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endif %}
+
+            <div class="section-content">
+                {% if content is string %}
+                    {{ content|markdown|safe }}
+                {% else %}
+                    <ul class="section-list">
+                        {% for item in content %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endmacro %}
+
+        {% if category.meta.get('attributes') %}
+        <div class="card-section attributes-section">
+            <h2>Характеристики</h2>
+            <div class="attributes-grid">
+                {% for attr in category.meta.attributes %}
+                    <div class="attribute-item">
+                        <span class="attribute-label">{{ attr.name }}:</span>
+                        <span class="attribute-value">{{ attr.value }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if category.meta.get('description') %}
+            {{ render_section(
+                'Описание',
+                category.meta.description,
+                category.meta.get('description_images'),
+                category.meta.get('description_captions')
+            ) }}
+        {% endif %}
+
+        {% if category.meta.get('keywords') %}
+            {{ render_section(
+                'Ключевые слова',
+                category.meta.keywords,
+                category.meta.get('keywords_images'),
+                category.meta.get('keywords_captions')
+            ) }}
+        {% endif %}
+
+        {% if category.meta.get('personality') %}
+            {{ render_section(
+                'Тип личности',
+                category.meta.personality,
+                category.meta.get('personality_images'),
+                category.meta.get('personality_captions')
+            ) }}
+        {% endif %}
+
+        {% if category.meta.get('sources') %}
+        <div class="card-section sources-section">
+            <h2>Источники</h2>
+            <ul class="section-list">
+                {% for source in category.meta.sources %}
+                    <li>
+                        {% if source.url %}
+                            <a href="{{ source.url }}">{{ source.text }}</a>
+                        {% else %}
+                            {{ source.text }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="card-html-content">
+            {{ category.html|safe }}
         </div>
     </div>
 {% endblock %}

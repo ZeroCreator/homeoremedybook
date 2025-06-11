@@ -1,7 +1,8 @@
 ---
-category: type
 title: Растительное царство
 slug: plants
+category: type
+kingdom: Растительное царство  
 image: 
 description: Препараты растительного происхождения
 keywords: травы, цветы, деревья

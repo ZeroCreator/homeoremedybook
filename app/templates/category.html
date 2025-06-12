@@ -21,6 +21,25 @@
     <h1>Категории</h1>
 
     <section class="category-section">
+        <h2>Миазмы</h2>
+        <div class="cards-grid">
+            {% for miasm in miasms %}
+                <div class="card-preview">
+                    <a href="{{ url_for('category_detail', slug=miasm.slug) }}">
+                        {% if miasm.image %}
+                            <img src="{{ url_for('static', filename='images/' + miasm.image) }}"
+                                 alt="{{ miasm.name }}" class="card-image">
+                        {% else %}
+                            <div class="card-image-placeholder"></div>
+                        {% endif %}
+                        <h3>{{ miasm.name }}</h3>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="category-section">
         <h2>Типы (царства)</h2>
         <div class="cards-grid">
             {% for type in types %}
@@ -39,22 +58,4 @@
         </div>
     </section>
 
-    <section class="category-section">
-        <h2>Миазмы</h2>
-        <div class="cards-grid">
-            {% for miasm in miasms %}
-                <div class="card-preview">
-                    <a href="{{ url_for('category_detail', slug=miasm.slug) }}">
-                        {% if miasm.image %}
-                            <img src="{{ url_for('static', filename='images/' + miasm.image) }}"
-                                 alt="{{ miasm.name }}" class="card-image">
-                        {% else %}
-                            <div class="card-image-placeholder"></div>
-                        {% endif %}
-                        <h3>{{ miasm.name }}</h3>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-    </section>
 {% endblock %}

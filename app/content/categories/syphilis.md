@@ -3,7 +3,7 @@ title: Syphilis
 slug: syphilis
 category: miasm
 cirillic: Сифилис, Сифилитический миазм
-image: miasm-2.jpg
+image: syphilis.jpg
 attributes:
   - {name: "Основная характеристика", value: "Разрушение"}
   - {name: "Стремление", value: "Избавиться от отжившего. Изменить форму"}

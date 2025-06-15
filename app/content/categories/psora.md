@@ -3,7 +3,7 @@ title: Psora
 slug: psora
 category: miasm
 cirillic: Псора, Псорный миазм
-image: miasm-2.jpg
+image: psora.jpg
 attributes:
   - {name: "Основная характеристика", value: "Недостаточность"}
   - {name: "Стремление", value: "К собственному выживанию здесь и сейчас"}

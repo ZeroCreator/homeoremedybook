@@ -3,7 +3,7 @@ title: Sycosis
 slug: sycosis
 category: miasm
 cirillic: Сикоз, Сикотический миазм
-image: miasm-2.jpg
+image: sycosis.jpg
 attributes:
   - {name: "Основная характеристика", value: "Избыточность"}
   - {name: "Стремление", value: "К удовольствиям, удовлетворением желаний и страстей"}

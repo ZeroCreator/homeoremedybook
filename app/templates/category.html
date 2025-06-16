@@ -6,14 +6,14 @@
 {% block title %}Категории{% endblock %}
 
 {% block left_menu %}
-    <h3>Типы (царства)</h3>
-    {% for type in types %}
-        <a href="{{ url_for('category_detail', slug=type.slug) }}">{{ type.name }}</a>
-    {% endfor %}
-
     <h3>Миазмы</h3>
     {% for miasm in miasms %}
         <a href="{{ url_for('category_detail', slug=miasm.slug) }}">{{ miasm.name }}</a>
+    {% endfor %}
+
+    <h3>Типы (царства)</h3>
+    {% for type in types %}
+        <a href="{{ url_for('category_detail', slug=type.slug) }}">{{ type.name }}</a>
     {% endfor %}
 {% endblock %}
 

@@ -3,7 +3,7 @@ category: type
 type: minerals
 title: Минералы
 slug: minerals
-image: 
+image: minerals.jpg
 description: 
 keywords: 
 ---

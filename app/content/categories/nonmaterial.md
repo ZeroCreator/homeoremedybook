@@ -3,7 +3,7 @@ category: type
 type: nonmaterial
 title: Не материальные
 slug: nonmaterial
-image: 
+image: nonmaterial.jpg
 description: 
 keywords: 
 ---

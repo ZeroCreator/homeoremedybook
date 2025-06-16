@@ -419,8 +419,8 @@ body {
 
 /* Стили для блока источников */
 .sources-section {
-    background-color: #f5f7fa;
-    border-left: 4px solid #b3e5fc;
+    background-color: #f8f9fa;
+    border-left: 4px solid #d1d9d0;
     padding: 20px;
     margin-bottom: 25px;
     border-radius: 0 8px 8px 0;
@@ -430,7 +430,7 @@ body {
     color: #2c3e50;
     margin-top: 0;
     padding-bottom: 10px;
-    border-bottom: 1px solid #e1f5fe;
+    border-bottom: 1px solid #d1d9d0;
 }
 
 .sources-section .section-list {
@@ -456,9 +456,9 @@ body {
 }
 
 .sources-section a {
-    color: #0277bd;
+    color: #6b8e7e;
     text-decoration: none;
-    border-bottom: 1px solid #b3e5fc;
+    border-bottom: 1px solid #6b8e7e;
     transition: all 0.2s ease;
     padding-bottom: 1px;
 }
@@ -779,4 +779,160 @@ body {
     background-color: white;
     border: 1px solid #e2e8f0;
     border-left: 4px solid var(--primary);
+}
+
+/* Стили для фильтрации */
+.filters-container {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f5f7f3; /* Светлый фон как у body */
+    border-radius: 8px;
+    border: 1px solid #d1d9d0; /* Граница в тон вторичному цвету */
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-row input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 15px;
+    border: 1px solid #d1d9d0;
+    border-radius: 4px;
+    background: white;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-row input[type="text"]:focus {
+    outline: none;
+    border-color: #8c9e7e; /* Основной цвет */
+    box-shadow: 0 0 0 2px rgba(140, 158, 126, 0.2);
+}
+
+.filter-row select {
+    padding: 10px 15px;
+    border: 1px solid #d1d9d0;
+    border-radius: 4px;
+    background: white;
+    font-size: 1rem;
+    color: #4a5568;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-row select:focus {
+    outline: none;
+    border-color: #8c9e7e;
+    box-shadow: 0 0 0 2px rgba(140, 158, 126, 0.2);
+}
+
+.filter-row button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #6b8e7e; /* Акцентный цвет */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-row button[type="submit"]:hover {
+    background-color: #5a7c6e; /* Темнее акцентного */
+}
+
+.reset-filters {
+    margin-left: auto;
+    color: #6b8e7e; /* Акцентный цвет */
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.reset-filters:hover {
+    text-decoration: underline;
+    background-color: rgba(107, 142, 126, 0.1);
+}
+
+.active-filters {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #e8f0e8; /* Светло-зеленый фон */
+    border-left: 4px solid #6b8e7e; /* Акцентный цвет */
+    border-radius: 0 4px 4px 0;
+}
+
+.active-filters p {
+    margin: 0 0 8px 0;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.active-filters ul {
+    margin: 5px 0 0 0;
+    padding-left: 20px;
+}
+
+.active-filters li {
+    margin-bottom: 5px;
+    color: #4a5568;
+}
+
+.card-miasm {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 3px 8px;
+    background: #e8f0e8; /* Как у active-filters */
+    border: 1px solid #6b8e7e; /* Акцентный цвет */
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #6b8e7e; /* Акцентный цвет */
+    font-size: 1.2em;
+    background: #f5f7f3; /* Основной фон */
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .filters-container {
+        padding: 15px;
+    }
+
+    .filter-row {
+        gap: 10px;
+    }
+
+    .filter-row input[type="text"],
+    .filter-row select,
+    .filter-row button[type="submit"] {
+        width: 100%;
+    }
+
+    .reset-filters {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
 }

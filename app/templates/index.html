@@ -3,7 +3,7 @@
 {% block title %}Препараты{% endblock %}
 
 {% block left_menu %}
-    {% for card in cards %}
+    {% for card in all_cards %}
         <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">{{ card.meta.title }}</a>
     {% endfor %}
 {% endblock %}
@@ -11,33 +11,77 @@
 {% block content %}
     <h1>Справочник препаратов</h1>
 
-    <form class="search" method="get">
-        <input type="text" name="keywords" placeholder="Поиск препаратов..." value="{{ keyword_filter }}">
-        <button type="submit">Найти</button>
-    </form>
+    <div class="filters-container">
+        <form class="search-form" method="get">
+            <div class="filter-row">
+                <input type="text" name="keywords" placeholder="Поиск по тексту..." value="{{ request.args.get('keywords', '') }}">
+                <button type="submit">Искать</button>
+            </div>
 
-    {% if keyword_filter %}
-        <p>Результаты поиска для "{{ keyword_filter }}":</p>
+            <div class="filter-row">
+                <select name="miasm">
+                    <option value="">Все миазмы</option>
+                    {% for miasm in miasms %}
+                        <option value="{{ miasm }}" {% if request.args.get('miasm') == miasm %}selected{% endif %}>{{ miasm }}</option>
+                    {% endfor %}
+                </select>
+
+                <select name="group">
+                    <option value="">Все группы</option>
+                    {% for group in groups %}
+                        <option value="{{ group }}" {% if request.args.get('group') == group %}selected{% endif %}>{{ group }}</option>
+                    {% endfor %}
+                </select>
+
+                <a href="{{ url_for('index') }}" class="reset-filters">Сбросить фильтры</a>
+            </div>
+        </form>
+    </div>
+
+    {% if request.args.get('keywords') or request.args.get('miasm') or request.args.get('group') %}
+        <div class="active-filters">
+            <p>Активные фильтры:</p>
+            <ul>
+                {% if request.args.get('keywords') %}
+                    <li>Текст: "{{ request.args.get('keywords') }}"</li>
+                {% endif %}
+                {% if request.args.get('miasm') %}
+                    <li>Миазм: {{ request.args.get('miasm') }}</li>
+                {% endif %}
+                {% if request.args.get('group') %}
+                    <li>Группа: {{ request.args.get('group') }}</li>
+                {% endif %}
+            </ul>
+        </div>
     {% endif %}
 
     <div class="cards-grid">
-        {% for card in cards %}
-            <div class="card-preview">
-                <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">
-                    {% if card.meta.get('image') %}
-                        <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
-                             alt="{{ card.meta.title }}" class="card-image">
-                    {% else %}
-                        <div class="card-image-placeholder">{{ card.meta.title|first }}</div>
-                    {% endif %}
-                    <div class="card-preview-content">
-                        <h3>{{ card.meta.title }}</h3>
-                        {% if card.meta.get('base_description') %}
-                            <p class="cirillic">{{ card.meta.base_description }}</p>
+        {% if cards %}
+            {% for card in cards %}
+                <div class="card-preview">
+                    <a href="{{ url_for('card_detail', slug=card.meta.slug) }}">
+                        {% if card.meta.get('image') %}
+                            <img src="{{ url_for('static', filename='images/' + card.meta.image) }}"
+                                 alt="{{ card.meta.title }}" class="card-image">
+                        {% else %}
+                            <div class="card-image-placeholder">{{ card.meta.title|first }}</div>
                         {% endif %}
-                    </div>
-                </a>
+                        <div class="card-preview-content">
+                            <h3>{{ card.meta.title }}</h3>
+                            {% if card.meta.get('base_description') %}
+                                <p class="cirillic">{{ card.meta.base_description }}</p>
+                            {% endif %}
+                            {% if card.meta.get('miasm') %}
+                                <span class="card-miasm">{{ card.meta.miasm }}</span>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-results">
+                <p>Ничего не найдено. Попробуйте изменить параметры поиска.</p>
             </div>
-        {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}

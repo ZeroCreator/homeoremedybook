@@ -5,7 +5,7 @@ category: general
 cirillic: Стафизагрия
 base_description: Дельфиниум. Семейство лютиковые 
 image: staphysagria.jpg
-miasm: Сикотический с элементами сифилитического
+miasm: Сикоз, Сифилис
 group: Растения
 description: 
   Staphysagria — для тех, кто «терпит, потом взрывается».<br>

@@ -24,35 +24,82 @@
         {% endfor %}
     </div>
 
-    <script>
-        function toggleTerm(element) {
-            // Обрабатываем как клик по кнопке, так и клик по ссылке в меню
-            const content = element.classList.contains('glossary-term-header')
-                ? element.nextElementSibling
-                : document.querySelector(`#${element.dataset.target} .glossary-term-content`);
+<script>
+    // Функция для управления состоянием термина
+    function setTermState(termId, isOpen) {
+        const termElement = document.getElementById(termId);
+        const content = termElement?.querySelector('.glossary-term-content');
+        const menuLink = document.querySelector(`.menu-term-link[href="#${termId}"]`);
 
-            if (content) {
-                content.style.display = content.style.display === 'none' ? 'block' : 'none';
-            }
+        if (!termElement || !content) return;
+
+        // Устанавливаем видимость контента
+        content.style.display = isOpen ? 'block' : 'none';
+
+        // Управляем классами активности
+        if (isOpen) {
+            termElement.classList.add('active-term');
+            if (menuLink) menuLink.classList.add('active-term');
+        } else {
+            termElement.classList.remove('active-term');
+            if (menuLink) menuLink.classList.remove('active-term');
         }
+    }
 
-        // Обработчики событий
-        document.addEventListener('DOMContentLoaded', function() {
-            // Назначаем обработчики для ссылок в меню
-            document.querySelectorAll('.menu-term-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Отменяем стандартное поведение ссылки
-                    toggleTerm(this);
-                    window.location.hash = this.getAttribute('href'); // Обновляем хэш в URL
-                });
+    // Функция для переключения состояния термина
+    function toggleTerm(termId) {
+        const termElement = document.getElementById(termId);
+        const content = termElement?.querySelector('.glossary-term-content');
+
+        if (!termElement || !content) return;
+
+        // Определяем текущее состояние (открыт/закрыт)
+        const isCurrentlyOpen = content.style.display !== 'none';
+        // Устанавливаем противоположное состояние
+        setTermState(termId, !isCurrentlyOpen);
+    }
+
+    // Обработчики событий
+    document.addEventListener('DOMContentLoaded', function() {
+        // Обработчик для ссылок в меню
+        document.querySelectorAll('.menu-term-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const termId = this.getAttribute('href').substring(1);
+                toggleTerm(termId);
+                window.location.hash = this.getAttribute('href');
+            });
+        });
+
+        // Обработчик для заголовков терминов
+        document.querySelectorAll('.glossary-term-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const termId = this.parentElement.id;
+                toggleTerm(termId);
+                window.location.hash = `#${termId}`;
+            });
+        });
+
+        // Обработчик изменения хэша
+        window.addEventListener('hashchange', function() {
+            // Закрываем все термины
+            document.querySelectorAll('.glossary-term').forEach(term => {
+                const termId = term.id;
+                setTermState(termId, false);
             });
 
-            // Автоматически раскрываем термин при загрузке страницы с хэшем
+            // Если есть хэш - открываем соответствующий термин
             if (window.location.hash) {
                 const termId = window.location.hash.substring(1);
-                const content = document.querySelector(`#${termId} .glossary-term-content`);
-                if (content) content.style.display = 'block';
+                setTermState(termId, true);
             }
         });
-    </script>
+
+        // Инициализация при загрузке
+        if (window.location.hash) {
+            const termId = window.location.hash.substring(1);
+            setTermState(termId, true);
+        }
+    });
+</script>
 {% endblock %}

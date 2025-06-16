@@ -637,6 +637,27 @@ body {
     color: #8c9e7e;
 }
 
+.left-menu .active-term {
+    background-color: rgba(140, 158, 126, 0.2); /* Полупрозрачный основной цвет */
+    border-left: 3px solid var(--primary);
+    font-weight: bold;
+    transform: translateX(5px);
+}
+
+.left-menu .active-term:hover {
+    background-color: rgba(140, 158, 126, 0.3); /* Чуть темнее при наведении */
+}
+
+glossary-term.active-term {
+    background-color: rgba(140, 158, 126, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 0 2px rgba(140, 158, 126, 0.2);
+}
+
+.glossary-term.active-term .glossary-term-header {
+    background-color: rgba(140, 158, 126, 0.2);
+}
+
 /* Directory page styles */
 .glossary-container {
     max-width: 800px;

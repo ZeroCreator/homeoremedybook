@@ -7,8 +7,8 @@ class Config:
     FLATPAGES_ROOT = os.path.join(BASE_DIR, 'src', 'app', 'content')
     FLATPAGES_EXTENSION = '.md'
     FLATPAGES_MARKDOWN_EXTENSIONS = ['fenced_code', 'tables']
-    ACUTE_CASES_FOLDER = os.path.join(BASE_DIR, 'src', 'app', 'content', 'acute_cases')
-    CATEGORY_FOLDER = os.path.join(BASE_DIR, 'src', 'app', 'content', 'categories')
+    ACUTE_CASES_FOLDER = os.path.join(FLATPAGES_ROOT, 'acute_cases')
+    CATEGORY_FOLDER = os.path.join(FLATPAGES_ROOT, 'categories')
     UPLOAD_FOLDER = 'static/images'
 
     @staticmethod

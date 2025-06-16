@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_flatpages import FlatPages
 import markdown

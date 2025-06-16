@@ -3,7 +3,7 @@ category: type
 type: nosodes
 title: Нозоды
 slug: nosodes
-image: 
+image: nosodes.jpg
 description: 
 keywords: 
 ---

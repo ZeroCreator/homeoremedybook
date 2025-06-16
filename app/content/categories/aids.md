@@ -3,7 +3,7 @@ title: AIDS
 slug: aids
 category: miasm
 cirillic: СПИД
-image: aids.webp
+image: aids.jpg
 description: |
   **Tема**: Личность во взаимоотношениях с обществом
 sources:

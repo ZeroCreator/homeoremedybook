@@ -2,7 +2,7 @@
 title: Саркоды
 slug: sarcodes
 category: type
-kingdom: Саркоды
+group: Саркоды
 image: 
 description: Саркоды
 keywords:

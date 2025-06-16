@@ -1,7 +1,7 @@
 ---
 category: type
 type: nonmaterial
-title: Не материальные
+title: Нематериальные
 slug: nonmaterial
 image: nonmaterial.jpg
 description: 

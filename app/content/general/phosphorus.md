@@ -6,7 +6,7 @@ cirillic: Фосфор
 base_description: 
 image: phosphor-1.jpg
 miasm:
-kingdom: 
+group: Минеральное царство
 description:
   - Это очень восприимчивые, чувствительные люди. 
   - Они открыты и не могут это изменить. 

@@ -10,7 +10,7 @@ cirillic:
 base_description:
 image:
 miasm:
-kingdom:
+group:
 description: 
 symptoms:
 modalities: >

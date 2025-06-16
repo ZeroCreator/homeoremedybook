@@ -47,6 +47,8 @@ h1, h2, h3, h4, h5, h6 {
     --secondary: #d1d9d0;    /* Светло-серый */
     --accent: #6b8e7e;       /* Темно-зелёный */
     --background: #f5f7f3;   /* Светлый фон */
+    --text-color: #333;
+    --text-light: #666;
 }
 
 body {
@@ -933,27 +935,4 @@ glossary-term.active-term {
     background: #f5f7f3; /* Основной фон */
     border-radius: 8px;
     margin-top: 20px;
-}
-
-/* Адаптация для мобильных */
-@media (max-width: 768px) {
-    .filters-container {
-        padding: 15px;
-    }
-
-    .filter-row {
-        gap: 10px;
-    }
-
-    .filter-row input[type="text"],
-    .filter-row select,
-    .filter-row button[type="submit"] {
-        width: 100%;
-    }
-
-    .reset-filters {
-        margin-left: 0;
-        width: 100%;
-        text-align: center;
-    }
 }

@@ -5,7 +5,7 @@ category: general
 cirillic: Ликоподиум
 base_description: Плаун булавовидный, семейство плауновых
 image: licopodium.jpg
-miasm:
+miasm: Псора, Сикоз
 group: Растения
 description:
   - Больше мужской препарат.

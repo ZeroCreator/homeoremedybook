@@ -3,7 +3,7 @@ title: Nux vomica
 slug: nux-vomica
 category: general
 cirillic: Нукс вомика
-base_description: Чилибуха рвотная (рвотный орех). Семейство Логаниевые 
+base_description: Чилибуха рвотная (рвотный орех). Семейство Логаниевые (Loganiaceae)
 image: nux-vomica.jpg
 miasm: Псора, Сикоз
 group: Растения

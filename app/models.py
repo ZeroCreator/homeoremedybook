@@ -173,4 +173,7 @@ def load_glossary_terms():
                 logger.error(f"Error loading glossary term {filename}: {str(e)}")
                 continue
 
-    return glossary
+        # Сортируем словарь по ключу (term) и создаем новый OrderedDict
+        sorted_glossary = dict(sorted(glossary.items(), key=lambda item: item[0].lower()))
+
+    return sorted_glossary

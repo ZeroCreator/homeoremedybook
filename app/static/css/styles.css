@@ -844,7 +844,7 @@ glossary-term.active-term {
 }
 
 .filter-row select {
-    padding: 10px 15px;
+    padding: 10px 15px 10px 5px;
     border: 1px solid #d1d9d0;
     border-radius: 4px;
     background: white;

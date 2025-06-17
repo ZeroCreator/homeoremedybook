@@ -22,12 +22,25 @@
         {% endif %}
 
         {% macro render_section(title, content, images=None, captions=None) %}
-        <div class="card-section">
+        <div class="card-section
+            {% if title == 'Описание' %}description-section{% endif %}
+            {% if title == 'Ключевые слова' %}keywords-section{% endif %}">
             <h2>{{ title }}</h2>
+
+            <div class="section-content">
+                {% if content is string %}
+                    {{ content|markdown|safe }}
+                {% else %}
+                    <ul class="section-list">
+                        {% for item in content %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
 
             {% if images %}
                 {% if images is string or images|length == 1 %}
-                {# Одна картинка - отображаем по центру #}
                 <div class="section-image-wrapper single-image">
                     <img src="{{ url_for('static', filename='images/' + (images if images is string else images[0])) }}"
                          alt="{{ title }} {{ category.title }}"
@@ -39,7 +52,6 @@
                     {% endif %}
                 </div>
                 {% else %}
-                {# Две картинки - отображаем рядом #}
                 <div class="section-images-wrapper dual-images">
                     {% for img in images[:2] %}
                     <div class="dual-image-container">
@@ -55,17 +67,6 @@
                 {% endif %}
             {% endif %}
 
-            <div class="section-content">
-                {% if content is string %}
-                    {{ content|markdown|safe }}
-                {% else %}
-                    <ul class="section-list">
-                        {% for item in content %}
-                            <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </div>
         </div>
         {% endmacro %}
 

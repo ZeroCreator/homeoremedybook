@@ -359,6 +359,73 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+/* Стили ТОЛЬКО для блока Описание (полноразмерные изображения вертикально) */
+.description-section .section-images-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.description-section .dual-image-container,
+.description-section .section-image-wrapper.single-image {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.description-section .section-image {
+    object-fit: contain !important;
+    max-height: none !important;
+    height: auto !important;
+    max-width: 100%;
+    background: #f8f8f8;
+    padding: 10px;
+}
+
+/* Стили ТОЛЬКО для блока Ключевые слова (картинка справа, текст как было) */
+.keywords-section {
+    position: relative;
+    padding-right: 300px; /* Место для картинки */
+    min-height: 200px;
+}
+
+.keywords-section .section-content {
+    width: 100%; /* Текст занимает всю ширину */
+    padding-right: 20px; /* Отступ от картинки */
+    box-sizing: border-box;
+}
+
+.keywords-section .section-image-wrapper {
+    position: absolute;
+    right: 0;
+    top: 50px; /* Отступ от заголовка */
+    width: 280px;
+}
+
+.keywords-section .section-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .keywords-section {
+        padding-right: 0;
+        min-height: 0;
+    }
+
+    .keywords-section .section-image-wrapper {
+        position: static;
+        width: 100%;
+        margin-top: 20px !important;
+    }
+
+    .keywords-section .section-content {
+        padding-right: 0;
+    }
+}
+
 /* Стили для изображений */
 .section-image-wrapper {
     text-align: center;

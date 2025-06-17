@@ -3,9 +3,15 @@ from flask import Flask
 from flask_flatpages import FlatPages
 import markdown
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_folder='static',
+            template_folder='templates')
 
 app.config.from_object('config.Config')
+
+# Явно указываем пути
+app.static_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+app.template_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 
 pages = FlatPages(app)
 

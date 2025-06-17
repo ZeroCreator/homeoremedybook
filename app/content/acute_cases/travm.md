@@ -1,7 +1,7 @@
 ---
 name: Травмы
 slug: travmy
-image: trauma.jpg
+image: travm.jpg
 ---
 
 ## Общие рекомендации

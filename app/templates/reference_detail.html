@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}{{ material.meta.title }}{% endblock %}
+
+{% block left_menu %}
+    <a href="{{ url_for('reference') }}" class="back-link">← Назад к списку</a>
+    {% for m in materials %}
+        <a href="{{ url_for('reference_detail', slug=m.meta.slug) }}"
+           class="menu-term-link{% if m.meta.slug == material.meta.slug %} active{% endif %}">
+            {{ m.meta.title }}
+        </a>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <div class="reference-detail">
+        <div class="reference-header">
+            <h1>{{ material.meta.title }}</h1>
+        </div>
+
+        <div class="reference-content">
+            {{ material.html|safe }}
+        </div>
+
+        {% if material.meta.description_images %}
+            <div class="reference-images-section">
+                <div class="reference-images-stacked">
+                    {% if material.meta.description_images is string %}
+                        <div class="reference-image-container">
+                            <img src="{{ url_for('static', filename='images/' + material.meta.description_images) }}"
+                                 alt="{{ material.meta.title }}"
+                                 class="reference-image"
+                                 onerror="this.style.display='none'">
+                            {% if material.meta.description_captions is string %}
+                                <p class="reference-image-caption">
+                                    {{ material.meta.description_captions }}
+                                </p>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        {% for img in material.meta.description_images %}
+                            <div class="reference-image-container">
+                                <img src="{{ url_for('static', filename='images/' + img) }}"
+                                     alt="{{ material.meta.title }} иллюстрация {{ loop.index }}"
+                                     class="reference-image"
+                                     onerror="this.style.display='none'">
+                                {% if material.meta.description_captions and
+                                      loop.index0 < material.meta.description_captions|length %}
+                                    <p class="reference-image-caption">
+                                        {{ material.meta.description_captions[loop.index0] }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

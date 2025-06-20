@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Справочные материалы{% endblock %}
+
+{% block left_menu %}
+    {% for material in materials %}
+        <a href="{{ url_for('reference_detail', slug=material.meta.slug) }}" class="menu-term-link">{{ material.meta.title }}</a>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <h1>Справочные материалы</h1>
+
+    <div class="cards-grid">
+        {% if materials %}
+            {% for material in materials %}
+                <div class="card-preview">
+                    <a href="{{ url_for('reference_detail', slug=material.meta.slug) }}">
+                        {% if material.meta.image %}
+                            <img src="{{ url_for('static', filename='images/' + material.meta.image) }}"
+                                 alt="{{ material.meta.title }}" class="card-image">
+                        {% elif material.meta.description_images %}
+                            {% if material.meta.description_images is string %}
+                                <img src="{{ url_for('static', filename='images/' + material.meta.description_images) }}"
+                                     alt="{{ material.meta.title }}" class="card-image">
+                            {% elif material.meta.description_images|length > 0 %}
+                                <img src="{{ url_for('static', filename='images/' + material.meta.description_images[0]) }}"
+                                     alt="{{ material.meta.title }}" class="card-image">
+                            {% endif %}
+                        {% else %}
+                            <div class="card-image-placeholder">{{ material.meta.title|first }}</div>
+                        {% endif %}
+                        <div class="card-preview-content">
+                            <h3>{{ material.meta.title }}</h3>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-results">
+                <p>Справочные материалы не найдены.</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

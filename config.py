@@ -9,6 +9,7 @@ class Config:
     FLATPAGES_MARKDOWN_EXTENSIONS = ['fenced_code', 'tables']
     ACUTE_CASES_FOLDER = os.path.join(FLATPAGES_ROOT, 'acute_cases')
     CATEGORY_FOLDER = os.path.join(FLATPAGES_ROOT, 'categories')
+    REFERENCE_FOLDER = os.path.join(FLATPAGES_ROOT, 'reference')
     UPLOAD_FOLDER = 'static/images'
 
     @staticmethod

@@ -6,6 +6,7 @@ from app.models import (
     get_cards_by_category,
     load_category,
     load_glossary_terms,
+    load_reference_materials,
 )
 
 
@@ -153,6 +154,31 @@ def category_detail(slug):
         'category_detail.html',
         category=item,
         menu_color=CATEGORIES[2]['color']
+    )
+
+
+@app.route('/reference')
+def reference():
+    materials = load_reference_materials()
+    return render_template(
+        'reference.html',
+        materials=materials,
+        menu_color=CATEGORIES[3]['color']
+    )
+
+
+@app.route('/reference/<slug>')
+def reference_detail(slug):
+    materials = load_reference_materials()
+    material = next((m for m in materials if m['slug'] == slug), None)
+
+    if not material:
+        return "Material not found", 404
+
+    return render_template(
+        'reference_detail.html',
+        material=material,
+        menu_color=CATEGORIES[3]['color']
     )
 
 

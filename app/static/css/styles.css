@@ -12,9 +12,6 @@ dt,
 .section-content,
 .card-html-content,
 .image-caption,
-.left-menu a {
-    line-height: 1.6; /* Чуть меньше, чем у body для специфичных элементов */
-}
 
 /* Особые случаи */
 .card-header h1 {
@@ -91,12 +88,6 @@ body {
     min-height: calc(100vh - 150px);
 }
 
-.left-menu {
-    width: 250px;
-    padding: 15px 0;
-    overflow-y: auto;
-}
-
 .menu-category {
     padding: 10px 15px;
     margin-bottom: 10px;
@@ -107,18 +98,6 @@ body {
     color: #333;
     padding-bottom: 5px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-.left-menu a {
-    display: block;
-    padding: 8px 15px;
-    color: #333;
-    text-decoration: none;
-    transition: background-color 0.2s;
-}
-
-.left-menu a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .content {
@@ -260,6 +239,7 @@ body {
 /* Основные стили левого меню */
 .left-menu {
     width: 250px;
+    min-width: 100px;
     padding: 20px;
     background-color: #d1d9d0;
     overflow-y: auto;
@@ -269,6 +249,10 @@ body {
 }
 
 .left-menu a {
+    line-height: 1.6;
+    display: block;
+    padding: 8px 15px;
+    transition: background-color 0.2s;
     display: block;
     padding: 10px 15px;
     margin: 5px 0;
@@ -1002,4 +986,92 @@ glossary-term.active-term {
     background: #f5f7f3; /* Основной фон */
     border-radius: 8px;
     margin-top: 20px;
+}
+
+.reference-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.reference-header h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.reference-main-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.reference-content {
+    margin-bottom: 40px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.reference-images-section {
+    margin-top: 40px;
+}
+
+.reference-images-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.reference-image-container {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.reference-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+.reference-image-caption {
+    text-align: center;
+    font-style: italic;
+    margin-top: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Стили для левого меню */
+.back-link {
+    display: block;
+    margin-bottom: 20px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.menu-term-link {
+    display: block;
+    padding: 8px 0;
+    color: #34495e;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    padding-left: 10px;
+}
+
+.menu-term-link:hover {
+    color: #2980b9;
+}
+
+.menu-term-link.active {
+    border-left-color: #3498db;
+    color: #3498db;
+    font-weight: 500;
 }

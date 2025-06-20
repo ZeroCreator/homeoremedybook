@@ -1,4 +1,3 @@
-from collections import defaultdict
 import yaml
 import markdown
 import os
@@ -24,6 +23,11 @@ CATEGORIES = [
     {
         'name': 'Категории',
         'slug': 'categories',
+        'color': '#8c9e7e'
+    },
+    {
+        'name': 'Справочные материалы',
+        'slug': 'reference',
         'color': '#8c9e7e'
     }
 ]
@@ -141,6 +145,7 @@ def load_category():
 
 def load_glossary_terms():
     glossary = {}
+    sorted_glossary = {}
     glossary_folder = 'app/content/glossary'
     os.makedirs(glossary_folder, exist_ok=True)
 
@@ -177,3 +182,44 @@ def load_glossary_terms():
         sorted_glossary = dict(sorted(glossary.items(), key=lambda item: item[0].lower()))
 
     return sorted_glossary
+
+
+def load_reference_materials():
+    materials = []
+    folder = current_app.config['REFERENCE_FOLDER']
+    md = markdown.Markdown(extensions=['extra', 'nl2br', 'tables'])
+
+    for filename in os.listdir(folder):
+        if filename.endswith('.md'):
+            filepath = os.path.join(folder, filename)
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    parts = content.split('---\n')
+
+                    if len(parts) < 3:
+                        logger.warning(f"File {filename} has incorrect format, skipping")
+                        continue
+
+                    meta_part, content_part = parts[1], parts[2]
+
+                    try:
+                        meta = yaml.safe_load(meta_part) or {}
+                    except yaml.YAMLError as e:
+                        logger.error(f"YAML error in {filename}: {str(e)}")
+                        meta = {}
+
+                    material = {
+                        'title': meta.get('title', filename.replace('.md', '')),
+                        'slug': meta.get('slug', filename.replace('.md', '')),
+                        'image': meta.get('image', ''),
+                        'html': md.convert(content_part),
+                        'meta': meta
+                    }
+                    materials.append(material)
+
+            except Exception as e:
+                logger.error(f"Error loading reference material {filename}: {str(e)}")
+                continue
+
+    return sorted(materials, key=lambda x: x['title'])

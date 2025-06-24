@@ -19,6 +19,34 @@
                 </button>
                 <div class="glossary-term-content" style="display: none;">
                     {{ data.content|safe }}
+
+                    {% if data is defined and data.get('meta') and data.meta.get('images') %}
+                        {% if data.meta.images is string or data.meta.images|length == 1 %}
+                        <div class="section-image-wrapper single-image">
+                            <img src="{{ url_for('static', filename='images/' + (data.meta.images if data.meta.images is string else data.meta.images[0])) }}"
+                                 alt="{{ term }}"
+                                 class="section-image">
+                            {% if data.meta.get('image_captions') and (data.meta.image_captions is string or data.meta.image_captions|length >= 1) %}
+                            <p class="image-caption">
+                                {{ data.meta.image_captions if data.meta.image_captions is string else data.meta.image_captions[0] }}
+                            </p>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <div class="section-images-wrapper dual-images">
+                            {% for img in data.meta.images[:2] %}
+                            <div class="dual-image-container">
+                                <img src="{{ url_for('static', filename='images/' + img) }}"
+                                     alt="{{ term }}"
+                                     class="section-image">
+                                {% if data.meta.get('image_captions') and data.meta.image_captions|length > loop.index0 %}
+                                <p class="image-caption">{{ data.meta.image_captions[loop.index0] }}</p>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

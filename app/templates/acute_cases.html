@@ -24,7 +24,9 @@
                     {% else %}
                         <div class="card-image-placeholder"></div>
                     {% endif %}
-                    <h3>{{ case.name }}</h3>
+                    <div class="card-preview-content">
+                        <h3>{{ case.name }}</h3>
+                    </div>
                 </a>
             </div>
         {% endfor %}

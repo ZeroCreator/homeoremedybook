@@ -71,9 +71,11 @@
                             {% if card.meta.get('base_description') %}
                                 <p class="cirillic">{{ card.meta.base_description }}</p>
                             {% endif %}
-                            {% if card.meta.get('miasm') %}
-                                <span class="card-miasm">{{ card.meta.miasm }}</span>
-                            {% endif %}
+                            <div class="card-miasm-container">
+                                {% if card.meta.get('miasm') %}
+                                    <span class="card-miasm">{{ card.meta.miasm }}</span>
+                                {% endif %}
+                            </div>
                         </div>
                     </a>
                 </div>

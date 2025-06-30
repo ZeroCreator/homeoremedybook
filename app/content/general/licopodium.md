@@ -181,6 +181,8 @@ personality_captions:
 sources:
   - text: Сайт Новосибирского гомеопатического центра
     url: https://homeopatia-nsk.ru/o-gomeopatii/gomeopaticheskie-preparaty-prosto-i-ponyatno/343-likopodium-v-gomeopatii-lycopodium-clavatum.html
+  - text: Материалы профкурса Via Homeopatica
+    url: https://viahomeopatica.ru/
 ---
 ---
 ### Типы Lycopodium

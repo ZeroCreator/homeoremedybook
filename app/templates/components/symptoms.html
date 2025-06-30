@@ -2,9 +2,7 @@
 <div class="card-section">
     <h2>Характерные симптомы</h2>
 
-    {# Проверяем, структурированные ли симптомы (новый формат) #}
     {% if meta.symptoms is mapping and (meta.symptoms.common or meta.symptoms.mental or meta.symptoms.particular) %}
-        {# Обрабатываем новый структурированный формат #}
         {% if meta.symptoms.get('common') %}
         <div class="symptoms-subsection">
             <h3>Общие</h3>

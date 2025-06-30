@@ -1,10 +1,54 @@
 {% if meta is defined and meta.get('modalities') %}
-    {% with
-        title='Модальности',
-        content=meta.modalities,
-        images=meta.get('modalities_images'),
-        captions=meta.get('modalities_captions')
-    %}
-        {% include 'components/section.html' %}
-    {% endwith %}
+<div class="card-section">
+    <h2>Модальности</h2>
+
+        {% if meta.modalities is mapping and (meta.modalities.deterioration or meta.modalities.improvement) %}
+        {% if meta.modalities.get('deterioration') %}
+        <div class="symptoms-subsection">
+            <h3>Ухудшение:</h3>
+            <div class="section-content">
+                {% if meta.modalities.deterioration is string %}
+                    {{ meta.modalities.deterioration|markdown|safe }}
+                {% else %}
+                    <ul class="section-list">
+                        {% for item in meta.modalities.deterioration %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if meta.modalities.get('improvement') %}
+        <div class="symptoms-subsection">
+            <h3>Улучшение:</h3>
+            <div class="section-content">
+                {% if meta.modalities.improvement is string %}
+                    {{ meta.modalities.improvement|markdown|safe }}
+                {% else %}
+                    <ul class="section-list">
+                        {% for item in meta.modalities.improvement %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    {% else %}
+        <div class="section-content">
+            {% if meta.modalities is string %}
+                {{ meta.modalities|markdown|safe }}
+            {% else %}
+                <ul class="section-list">
+                    {% for item in meta.modalities %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
 {% endif %}
+

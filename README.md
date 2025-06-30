@@ -21,3 +21,8 @@ http://localhost:5000
 
 ### Проект развернут на render.com и доступен по ссылке:
 https://homeoremedybook.onrender.com/
+
+
+# Удалить старые кэшированные файлы
+find . -name "__pycache__" -exec rm -rf {} +
+find . -name "*.pyc" -delete

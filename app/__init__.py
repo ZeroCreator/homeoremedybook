@@ -1,19 +1,19 @@
-import os
 from flask import Flask
 from flask_flatpages import FlatPages
 import markdown
+from config import Config
 
 app = Flask(__name__,
-            static_folder='static',
-            template_folder='templates')
+            static_folder=str(Config.STATIC_DIR),
+            static_url_path='/static',
+            template_folder=str(Config.TEMPLATE_DIR))
 
-app.config.from_object('config.Config')
-
-# Явно указываем пути
-app.static_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
-app.template_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+# Применяем конфигурацию
+app.config.from_object(Config)
+Config.init_app(app)
 
 pages = FlatPages(app)
+app.config['FLATPAGES_ROOT'] = Config.FLATPAGES_ROOT
 
 from app import routes
 

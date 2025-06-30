@@ -1,0 +1,103 @@
+{% if meta is defined and meta.get('symptoms') %}
+<div class="card-section">
+    <h2>Характерные симптомы</h2>
+
+    {# Проверяем, структурированные ли симптомы (новый формат) #}
+    {% if meta.symptoms is mapping and (meta.symptoms.common or meta.symptoms.mental or meta.symptoms.particular) %}
+        {# Обрабатываем новый структурированный формат #}
+        {% if meta.symptoms.get('common') %}
+        <div class="symptoms-subsection">
+            <h3>Общие</h3>
+            <div class="section-content">
+                {% if meta.symptoms.common is string %}
+                    {{ meta.symptoms.common|markdown|safe }}
+                {% else %}
+                    <ul class="section-list">
+                        {% for item in meta.symptoms.common %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if meta.symptoms.get('mental') %}
+        <div class="symptoms-subsection">
+            <h3>Психические</h3>
+            <div class="section-content">
+                {% if meta.symptoms.mental is string %}
+                    {{ meta.symptoms.mental|markdown|safe }}
+                {% else %}
+                    <ul class="section-list">
+                        {% for item in meta.symptoms.mental %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if meta.symptoms.get('particular') %}
+        <div class="symptoms-subsection">
+            <h3>Особенные</h3>
+            <div class="section-content">
+                {% if meta.symptoms.particular is string %}
+                    {{ meta.symptoms.particular|markdown|safe }}
+                {% else %}
+                    <ul class="section-list">
+                        {% for item in meta.symptoms.particular %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+    {# Если симптомы представлены как список или строка (старый формат) #}
+    {% else %}
+        <div class="section-content">
+            {% if meta.symptoms is string %}
+                {{ meta.symptoms|markdown|safe }}
+            {% else %}
+                <ul class="section-list">
+                    {% for item in meta.symptoms %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <!-- Общие изображения для всего блока симптомов -->
+    {% if meta.get('symptoms_images') %}
+        {% if meta.symptoms_images is string or meta.symptoms_images|length == 1 %}
+        <div class="section-image-wrapper single-image">
+            <img src="{{ url_for('static', filename='images/' + (meta.symptoms_images if meta.symptoms_images is string else meta.symptoms_images[0])) }}"
+                 alt="Симптомы {{ meta.title }}"
+                 class="section-image">
+            {% if meta.get('symptoms_captions') and (meta.symptoms_captions is string or meta.symptoms_captions|length >= 1) %}
+            <p class="image-caption">
+                {{ meta.symptoms_captions if meta.symptoms_captions is string else meta.symptoms_captions[0] }}
+            </p>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="section-images-wrapper dual-images">
+            {% for img in meta.symptoms_images[:2] %}
+            <div class="dual-image-container">
+                <img src="{{ url_for('static', filename='images/' + img) }}"
+                     alt="Симптомы {{ meta.title }}"
+                     class="section-image">
+                {% if meta.get('symptoms_captions') and meta.symptoms_captions|length > loop.index0 %}
+                <p class="image-caption">{{ meta.symptoms_captions[loop.index0] }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endif %}

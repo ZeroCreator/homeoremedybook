@@ -32,8 +32,8 @@
                     {{ content|markdown|safe }}
                 {% else %}
                     <ul class="section-list">
-                        {% for item in content %}
-                            <li>{{ item }}</li>
+                        {% for card in content %}
+                            <li>{{ card }}</li>
                         {% endfor %}
                     </ul>
                 {% endif %}

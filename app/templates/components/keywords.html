@@ -1,0 +1,10 @@
+{% if meta is defined and meta.get('keywords') %}
+    {% with
+        title='Ключи',
+        content=meta.keywords,
+        images=meta.get('keywords_images'),
+        captions=meta.get('keywords_captions')
+    %}
+        {% include 'components/section.html' %}
+    {% endwith %}
+{% endif %}

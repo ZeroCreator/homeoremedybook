@@ -1,0 +1,10 @@
+{% if meta is defined and meta.get('personality') %}
+    {% with
+        title='Тип личности',
+        content=meta.personality,
+        images=meta.get('personality_images'),
+        captions=meta.get('personality_captions')
+    %}
+        {% include 'components/section.html' %}
+    {% endwith %}
+{% endif %}

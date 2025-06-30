@@ -1,0 +1,20 @@
+{% if meta is defined and meta.get('image') %}
+    <img src="{{ url_for('static', filename='images/' + meta.image) }}"
+         alt="{{ meta.title }}" class="card-main-image">
+    <div class="card-categories-container">
+        <div class="card-categories">
+            {% if meta.get('miasm') %}
+                <div class="category-item">
+                    <span class="category-label">Миазм:</span>
+                    <span class="category-value">{{ meta.miasm }}</span>
+                </div>
+            {% endif %}
+            {% if meta.get('group') %}
+                <div class="category-item">
+                    <span class="category-label">Царство:</span>
+                    <span class="category-value">{{ meta.group }}</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

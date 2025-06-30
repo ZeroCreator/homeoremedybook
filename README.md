@@ -19,5 +19,11 @@ $ python wsgi.py
 http://localhost:5000
 
 
-### Проект развернут на render.com и доступен по ссылке:
+### Проект развернут на render.com и на vercel.com и доступен по ссылкам:
 https://homeoremedybook.onrender.com/
+https://homeoremedybook.vercel.app/
+
+
+# Удалить старые кэшированные файлы
+find . -name "__pycache__" -exec rm -rf {} +
+find . -name "*.pyc" -delete

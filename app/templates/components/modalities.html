@@ -1,0 +1,10 @@
+{% if meta is defined and meta.get('modalities') %}
+    {% with
+        title='Модальности',
+        content=meta.modalities,
+        images=meta.get('modalities_images'),
+        captions=meta.get('modalities_captions')
+    %}
+        {% include 'components/section.html' %}
+    {% endwith %}
+{% endif %}

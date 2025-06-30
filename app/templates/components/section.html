@@ -1,0 +1,45 @@
+{% if title is defined and content is defined %}
+<div class="card-section">
+    <h2>{{ title }}</h2>
+
+    {% if images is defined and images %}
+        {% if images is string or images|length == 1 %}
+        <div class="section-image-wrapper single-image">
+            <img src="{{ url_for('static', filename='images/' + (images if images is string else images[0])) }}"
+                 alt="{{ title }}"
+                 class="section-image">
+            {% if captions is defined and captions and (captions is string or captions|length >= 1) %}
+            <p class="image-caption">
+                {{ captions if captions is string else captions[0] }}
+            </p>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="section-images-wrapper dual-images">
+            {% for img in images[:2] %}
+            <div class="dual-image-container">
+                <img src="{{ url_for('static', filename='images/' + img) }}"
+                     alt="{{ title }}"
+                     class="section-image">
+                {% if captions is defined and captions and captions|length > loop.index0 %}
+                <p class="image-caption">{{ captions[loop.index0] }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endif %}
+
+    <div class="section-content">
+        {% if content is string %}
+            {{ content|markdown|safe }}
+        {% else %}
+            <ul class="section-list">
+                {% for item in content %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+{% endif %}

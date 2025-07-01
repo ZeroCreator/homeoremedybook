@@ -41,5 +41,38 @@
             </ul>
         {% endif %}
     </div>
+
+    {% if custom_blocks is defined and custom_blocks %}
+        {% for block in custom_blocks %}
+            <div class="custom-block">
+                <div class="custom-block-inner">
+                    {% if block.image %}
+                    <div class="custom-block-image">
+                        <img
+                            src="{{ url_for('static', filename='images/' + block.image) }}"
+                            alt="{{ block.alt|default('Custom image') }}"
+                        >
+                        {% if block.caption %}
+                        <p class="image-caption">{{ block.caption }}</p>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
+                    <div class="custom-block-content">
+                        {% if block.title %}
+                        <h3 class="custom-block-title">{{ block.title }}</h3>
+                        {% endif %}
+
+                        {% if block.content %}
+                        <div class="custom-block-text">
+                            {{ block.content|markdown|safe }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
 </div>
 {% endif %}

@@ -3,7 +3,8 @@
         title='Ключи',
         content=meta.keywords,
         images=meta.get('keywords_images'),
-        captions=meta.get('keywords_captions')
+        captions=meta.get('keywords_captions'),
+        custom_blocks=meta.get('custom_blocks', [])
     %}
         {% include 'components/section.html' %}
     {% endwith %}

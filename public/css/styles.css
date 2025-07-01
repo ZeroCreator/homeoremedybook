@@ -345,6 +345,7 @@ body {
     columns: 2;
     column-gap: 20px;
     padding-left: 20px;
+    gap: 36px;
     color: #4a6b82; /* Характерный сине-зеленый цвет */
 }
 
@@ -366,7 +367,7 @@ body {
 .description-section .section-images-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    padding-left: 1rem;
 }
 
 .description-section .dual-image-container,

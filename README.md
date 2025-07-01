@@ -25,9 +25,6 @@ find . -name "__pycache__" -exec rm -rf {} +
 find . -name "*.pyc" -delete
 ```
 
-### Проект развернут на `render.com` и на `vercel.com` и доступен по ссылкам:
-
-https://homeoremedybook.onrender.com/
+### Проект развернут на `vercel.com` и доступен по ссылке:
 
 https://homeoremedybook.vercel.app/
-

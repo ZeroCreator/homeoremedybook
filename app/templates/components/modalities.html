@@ -2,53 +2,58 @@
 <div class="card-section">
     <h2>Модальности</h2>
 
+    <div class="modalities-container">
         {% if meta.modalities is mapping and (meta.modalities.deterioration or meta.modalities.improvement) %}
-        {% if meta.modalities.get('deterioration') %}
-        <div class="symptoms-subsection">
-            <h3>Ухудшение:</h3>
-            <div class="section-content">
-                {% if meta.modalities.deterioration is string %}
-                    {{ meta.modalities.deterioration|markdown|safe }}
-                {% else %}
-                    <ul class="section-list">
-                        {% for item in meta.modalities.deterioration %}
-                            <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
+            <div class="modality-column deterioration-column">
+                {% if meta.modalities.get('deterioration') %}
+                <div class="symptoms-subsection">
+                    <h3>Ухудшение:</h3>
+                    <div class="section-content">
+                        {% if meta.modalities.deterioration is string %}
+                            {{ meta.modalities.deterioration|markdown|safe }}
+                        {% else %}
+                            <ul class="single-column-list">
+                                {% for item in meta.modalities.deterioration %}
+                                    <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
                 {% endif %}
             </div>
-        </div>
-        {% endif %}
 
-        {% if meta.modalities.get('improvement') %}
-        <div class="symptoms-subsection">
-            <h3>Улучшение:</h3>
+            <div class="modality-column improvement-column">
+                {% if meta.modalities.get('improvement') %}
+                <div class="symptoms-subsection">
+                    <h3>Улучшение:</h3>
+                    <div class="section-content">
+                        {% if meta.modalities.improvement is string %}
+                            {{ meta.modalities.improvement|markdown|safe }}
+                        {% else %}
+                            <ul class="single-column-list">
+                                {% for item in meta.modalities.improvement %}
+                                    <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        {% else %}
             <div class="section-content">
-                {% if meta.modalities.improvement is string %}
-                    {{ meta.modalities.improvement|markdown|safe }}
+                {% if meta.modalities is string %}
+                    {{ meta.modalities|markdown|safe }}
                 {% else %}
-                    <ul class="section-list">
-                        {% for item in meta.modalities.improvement %}
+                    <ul class="single-column-list">
+                        {% for item in meta.modalities %}
                             <li>{{ item }}</li>
                         {% endfor %}
                     </ul>
                 {% endif %}
             </div>
-        </div>
         {% endif %}
-    {% else %}
-        <div class="section-content">
-            {% if meta.modalities is string %}
-                {{ meta.modalities|markdown|safe }}
-            {% else %}
-                <ul class="section-list">
-                    {% for item in meta.modalities %}
-                        <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
-    {% endif %}
+    </div>
 </div>
 {% endif %}
-

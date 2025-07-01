@@ -384,6 +384,76 @@ body {
     padding: 10px;
 }
 
+/* Контейнер для модальностей */
+.modalities-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 15px;
+}
+
+/* Колонки для модальностей */
+.modality-column {
+    width: 100%;
+}
+
+/* Стили для десктопной версии */
+@media (min-width: 768px) {
+    .modalities-container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 3rem;
+    }
+
+    .deterioration-column,
+    .improvement-column {
+        width: calc(50% - 1.5rem);
+    }
+
+    .deterioration-column {
+        padding-right: 0;
+    }
+
+    .improvement-column {
+        padding-left: 0.5rem;
+    }
+}
+
+/* Стили для подсекций */
+.symptoms-subsection {
+    margin-bottom: 1rem;
+}
+
+.symptoms-subsection h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #2d3748;
+    padding-bottom: 0.25rem;
+}
+
+/* Список в ОДНУ колонку */
+.single-column-list {
+    padding-left: 20px;
+    color: #4a6b82;
+    list-style-type: disc;
+}
+
+.single-column-list li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+/* Выравнивание колонок по верхнему краю */
+.modality-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.symptoms-subsection {
+    flex-grow: 1;
+}
+
 /* Секция ключевых слов */
 .keywords-section {
     position: relative;

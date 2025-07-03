@@ -162,7 +162,7 @@ personality_captions:
   - Лорд Фаркуад («Шрек»)
 sources:
   - text: Ян Уотсон. Миазмы в гомеопатии
-  - text: ВСЕЛЕННАЯ ГОМЕОПАТИИ
+  - text: Вселенная гомеопатии
     url: https://www.spacehom.ru/tpost/hp57oeo5c1-pravilo-sikoticheskogo-miazma-chto-skrit
 ---
 

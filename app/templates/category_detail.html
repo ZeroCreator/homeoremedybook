@@ -111,6 +111,15 @@
             ) }}
         {% endif %}
 
+        <!-- Дополнительная информация -->
+        {% if category.content %}
+            <div class="card-section">
+                <div class="section-content">
+                    {{ category.html|safe }}
+                </div>
+            </div>
+        {% endif %}
+
         {% if category.meta.get('sources') %}
         <div class="card-section sources-section">
             <h2>Источники</h2>
@@ -128,8 +137,5 @@
         </div>
         {% endif %}
 
-        <div class="card-html-content">
-            {{ category.html|safe }}
-        </div>
     </div>
 {% endblock %}

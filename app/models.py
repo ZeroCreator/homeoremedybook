@@ -135,7 +135,8 @@ def process_category(meta, content, filename):
         'category': meta.get('category', ''),
         'image': meta.get('image', ''),
         'html': md.convert(content),
-        'meta': meta
+        'meta': meta,
+        'content': markdown.markdown(content, extensions=['extra', 'tables', 'fenced_code'])
     }
 
 

@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% block body_class %}acute-page{% endblock %}
-
 {% block title %}{{ case.name }}{% endblock %}
 
 {% block left_menu %}
@@ -10,6 +8,7 @@
 
 {% block content %}
     <div class="card-detail">
+        <!-- Заголовок -->
         <div class="card-header">
             <h1>{{ case.name }}</h1>
         </div>
@@ -19,8 +18,34 @@
                  alt="{{ case.name }}" class="card-main-image">
         {% endif %}
 
-        <div class="card-content">
-            {{ case.content|safe }}
-        </div>
+        <!-- Описание -->
+        {% if case.content %}
+            <div class="card-section">
+                <h2>Описание</h2>
+                <div class="section-content">
+                    {{ case.content|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Источники -->
+        {% if case.get('sources') %}
+            <div class="card-section sources-section">
+                <h2>Источники</h2>
+                <ul class="section-list">
+                    {% for source in case.sources %}
+                        <li>
+                            {% if source.url %}
+                                <a href="{{ source.url }}" target="_blank">
+                                    {{ source.text }}
+                                </a>
+                            {% else %}
+                                {{ source.text }}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

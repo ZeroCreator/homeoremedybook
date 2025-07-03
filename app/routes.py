@@ -112,9 +112,10 @@ def card_detail(slug):
 @app.route('/acute_cases')
 def acute_cases():
     cases = load_acute_cases()
-    return render_template('acute_cases.html',
-                         acute_cases=cases,
-                         menu_color=CATEGORIES[1]['color'])
+    return render_template(
+        'acute_cases.html',
+        acute_cases=cases
+    )
 
 
 @app.route('/acute-case/<slug>')
@@ -124,9 +125,10 @@ def acute_case_detail(slug):
     if not case:
         return "Case not found", 404
 
-    return render_template('acute_case_detail.html',
-                           case=case,
-                           menu_color=CATEGORIES[1]['color'])
+    return render_template(
+        'acute_case_detail.html',
+        case=case
+    )
 
 
 @app.route('/category')
@@ -135,8 +137,7 @@ def category():
     return render_template(
         'category.html',
         types=categories['types'],
-        miasms=categories['miasms'],
-        menu_color=CATEGORIES[2]['color']
+        miasms=categories['miasms']
     )
 
 
@@ -152,8 +153,7 @@ def category_detail(slug):
 
     return render_template(
         'category_detail.html',
-        category=item,
-        menu_color=CATEGORIES[2]['color']
+        category=item
     )
 
 
@@ -162,8 +162,7 @@ def reference():
     materials = load_reference_materials()
     return render_template(
         'reference.html',
-        materials=materials,
-        menu_color=CATEGORIES[3]['color']
+        materials=materials
     )
 
 
@@ -177,8 +176,7 @@ def reference_detail(slug):
 
     return render_template(
         'reference_detail.html',
-        material=material,
-        menu_color=CATEGORIES[3]['color']
+        material=material
     )
 
 
@@ -187,8 +185,7 @@ def glossary():
     terms = load_glossary_terms()
     return render_template(
         'glossary.html',
-        terms=terms,
-        menu_color=CATEGORIES[0]['color']
+        terms=terms
     )
 
 

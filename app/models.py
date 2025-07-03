@@ -12,23 +12,19 @@ CATEGORIES = [
     {
         'name': 'Препараты',
         'slug': 'general',
-        'color': '#d1d9d0',
         'subtypes': ['types', 'miasms']  # Добавляем подтипы
     },
     {
         'name': 'Острые случаи',
         'slug': 'acute_cases',
-        'color': '#8c9e7e'
     },
     {
         'name': 'Категории',
         'slug': 'categories',
-        'color': '#8c9e7e'
     },
     {
         'name': 'Справочные материалы',
         'slug': 'reference',
-        'color': '#8c9e7e'
     }
 ]
 
@@ -50,9 +46,17 @@ def get_cards_by_category(category_slug):
     return sorted(cards, key=lambda p: p.meta['title'])
 
 
+import re
+import yaml
+import markdown
+import logging
+from flask import current_app
+
+
 def load_acute_cases():
     acute_cases = []
     folder = current_app.config['ACUTE_CASES_FOLDER']
+    logger = logging.getLogger(__name__)
 
     for filename in os.listdir(folder):
         if filename.endswith('.md'):
@@ -61,13 +65,15 @@ def load_acute_cases():
                 with open(filepath, 'r', encoding='utf-8') as f:
                     content = f.read()
 
-                    # Более надежное разделение на метаданные и контент
-                    parts = content.split('---\n')
-                    if len(parts) < 3:
+                    match = re.split(r'^---\s*$', content, flags=re.MULTILINE)
+
+                    if len(match) < 3:
                         logger.warning(f"File {filename} has incorrect format, skipping")
                         continue
 
-                    meta_part, content_part = parts[1], parts[2]
+                    # Первый элемент - пустой, второй - метаданные, третий - контент
+                    meta_part = match[1].strip()
+                    content_part = match[2].strip()
 
                     # Безопасный парсинг YAML
                     try:
@@ -76,11 +82,25 @@ def load_acute_cases():
                         logger.error(f"YAML error in {filename}: {str(e)}")
                         meta = {}
 
+                    # Обработка источников
+                    sources = meta.get('sources', [])
+
+                    # Если источники заданы как список строк, преобразуем в словари
+                    if sources and isinstance(sources, list) and isinstance(sources[0], str):
+                        sources = [{'text': s, 'url': s} for s in sources]
+
+                    # Конвертация Markdown в HTML
+                    html_content = markdown.markdown(
+                        content_part,
+                        extensions=['extra', 'tables', 'fenced_code']
+                    )
+
                     case = {
                         'name': meta.get('name', filename.replace('.md', '')),
                         'slug': meta.get('slug', filename.replace('.md', '')),
                         'image': meta.get('image', ''),
-                        'content': markdown.markdown(content_part)
+                        'sources': sources,
+                        'content': html_content
                     }
                     acute_cases.append(case)
 
@@ -91,7 +111,6 @@ def load_acute_cases():
     return acute_cases
 
 
-# models.py (updated parts)
 def load_category():
     categories = {
         'types': [],

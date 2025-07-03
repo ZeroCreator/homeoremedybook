@@ -32,7 +32,6 @@ def get_cards_by_category(category_slug):
                     cards.append(p)
         except Exception as e:
             logger.error(f"Error processing page {p.path}: {str(e)}")
-    # Исправлено: безопасная сортировка с обработкой None
     return sorted(cards, key=lambda p: p.meta.get('title', '') or '')
 
 
@@ -48,7 +47,6 @@ def parse_md_file(filepath):
 
         parts = re.split(r'^---\s*$', content, flags=re.MULTILINE)
         if len(parts) < 3:
-            # Альтернативный вариант разделителя
             parts = content.split('---\n')
             if len(parts) < 3:
                 logger.warning(f"File {os.path.basename(filepath)} has incorrect format")

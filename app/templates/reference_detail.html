@@ -12,6 +12,20 @@
     {% endfor %}
 {% endblock %}
 
+{% block styles %}
+<style>
+    .reference-detail { max-width: 900px; margin: 0 auto; padding: 20px; }
+    .reference-header h1 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+    .reference-main-image { display: block; max-width: 100%; height: auto; margin: 0 auto 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .reference-content { margin-bottom: 40px; line-height: 1.6; font-size: 16px; }
+    .reference-images-section { margin-top: 40px; }
+    .reference-images-stacked { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
+    .reference-image-container { background: #f9f9f9; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .reference-image { display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 4px; }
+    .reference-image-caption { text-align: center; font-style: italic; margin-top: 10px; color: #666; font-size: 14px; }
+</style>
+{% endblock %}
+
 {% block content %}
     <div class="reference-detail">
         <div class="reference-header">

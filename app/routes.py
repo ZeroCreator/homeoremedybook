@@ -10,185 +10,190 @@ from app.models import (
 )
 
 
+def get_card_miasms(card):
+    """Извлекает миазмы карточки в унифицированном формате.
+    - Обрабатывает строковые и списковые форматы
+    - Разбивает строки по запятым
+    - Всегда возвращает список
+    """
+    miasms = card.meta.get('miasm', '')
+    if isinstance(miasms, str):
+        return [m.strip() for m in miasms.split(',')]
+    return miasms if isinstance(miasms, list) else []
+
+
+def matches_keyword(card, keyword):
+    """Проверяет совпадение ключевого слова с полями карточки.
+    - Анализирует текстовые и списковые поля
+    - Ищет вхождения в заголовке, описании, симптомах и др.
+    - Возвращает булево значение совпадения
+    """
+    if not keyword:
+        return True
+
+    search_fields = [
+        card.meta.get('title', ''),
+        card.meta.get('cirillic', ''),
+        card.meta.get('base_description', ''),
+        card.meta.get('personality', ''),
+        card.meta.get('modalities', ''),
+        card.html
+    ]
+
+    # Обработка списковых полей
+    for field in ['description', 'symptoms', 'keywords']:
+        value = card.meta.get(field, [])
+        if isinstance(value, list):
+            search_fields.append(' '.join(value))
+        else:
+            search_fields.append(str(value))
+
+    return any(keyword in (str(field) or '').lower() for field in search_fields)
+
+
 @app.route('/')
 def index():
+    """Главная страница с фильтрацией препаратов.
+    - Фильтрует карточки по ключевому слову, миазму и группе
+    - Собирает уникальные значения для фильтров
+    - Передает данные в шаблон index.html
+    """
     keyword_filter = request.args.get('keywords', '').lower()
     miasm_filter = request.args.get('miasm', '')
     group_filter = request.args.get('group', '')
 
-    # Получаем все карточки
     all_cards = get_cards_by_category('general')
 
     # Применяем фильтры
-    filtered_cards = []
+    filtered_cards = all_cards
+
+    # Фильтр по ключевым словам
+    if keyword_filter:
+        filtered_cards = [c for c in filtered_cards if matches_keyword(c, keyword_filter)]
+
+    # Фильтр по миазму
+    if miasm_filter:
+        filtered_cards = [c for c in filtered_cards if miasm_filter in get_card_miasms(c)]
+
+    # Фильтр по группе
+    if group_filter:
+        filtered_cards = [c for c in filtered_cards if c.meta.get('group') == group_filter]
+
+    # Сбор уникальных значений для фильтров
+    miasms, groups = set(), set()
     for card in all_cards:
-        match = True
-
-        # Фильтр по ключевым словам
-        if keyword_filter:
-            search_fields = [
-                card.meta.get('title', ''),
-                card.meta.get('cirillic', ''),
-                card.meta.get('base_description', ''),
-                ' '.join(card.meta['description']) if isinstance(card.meta.get('description'), list) else card.meta.get(
-                    'description', ''),
-                ' '.join(card.meta['symptoms']) if isinstance(card.meta.get('symptoms'), list) else card.meta.get(
-                    'symptoms', ''),
-                card.meta.get('modalities', ''),
-                ' '.join(card.meta['keywords']) if isinstance(card.meta.get('keywords'), list) else card.meta.get(
-                    'keywords', ''),
-                card.meta.get('personality', ''),
-                card.html
-            ]
-
-            keyword_match = any(
-                keyword_filter in str(field).lower()
-                for field in search_fields
-                if field
-            )
-
-            if not keyword_match:
-                match = False
-
-        # Фильтр по миазму (поддержка составных миазмов)
-        if miasm_filter:
-            card_miasms = card.meta.get('miasm', '')
-            if isinstance(card_miasms, str):
-                card_miasms = [m.strip() for m in card_miasms.split(',')]
-            elif not isinstance(card_miasms, list):
-                card_miasms = []
-
-            if not any(miasm_filter == m for m in card_miasms):
-                match = False
-
-        # Фильтр по группе
-        if group_filter:
-            card_group = card.meta.get('group', '')
-            if not card_group or card_group != group_filter:
-                match = False
-
-        if match:
-            filtered_cards.append(card)
-
-    # Получаем уникальные значения для фильтров
-    miasms = set()
-    groups = set()
-
-    for card in all_cards:
-        if card.meta.get('miasm'):
-            if isinstance(card.meta['miasm'], str):
-                for m in card.meta['miasm'].split(','):
-                    miasms.add(m.strip())
-            elif isinstance(card.meta['miasm'], list):
-                miasms.update(m.strip() for m in card.meta['miasm'])
-
+        miasms.update(get_card_miasms(card))
         if card.meta.get('group'):
             groups.add(card.meta['group'])
 
-    # Сортируем списки фильтров
-    miasms = sorted(miasms)
-    groups = sorted(groups)
-
-    return render_template('index.html',
-                           cards=filtered_cards if any([keyword_filter, miasm_filter, group_filter]) else all_cards,
-                           all_cards=all_cards,
-                           miasms=miasms,
-                           groups=groups,
-                           keyword_filter=request.args.get('keywords', ''))
+    return render_template(
+        'index.html',
+        cards=filtered_cards,
+        all_cards=all_cards,
+        miasms=sorted(miasms),
+        groups=sorted(groups),
+        keyword_filter=request.args.get('keywords', '')
+    )
 
 
 @app.route('/card/<path:slug>')
 def card_detail(slug):
+    """Страница детализации препарата.
+    - Находит карточку по slug
+    - Возвращает 404 при отсутствии
+    - Отображает шаблон card_detail.html
+    """
     card = next((p for p in pages if p.meta.get('slug') == slug), None)
     if not card:
         return "Card not found", 404
+    return render_template('card_detail.html', card=card, categories=CATEGORIES)
 
-    return render_template(
-        'card_detail.html',
-        card=card,
-        categories=CATEGORIES
-    )
 
 @app.route('/acute_cases')
 def acute_cases():
-    cases = load_acute_cases()
-    return render_template(
-        'acute_cases.html',
-        acute_cases=cases
-    )
+    """Страница списка острых случаев.
+    - Загружает все острые случаи
+    - Отображает шаблон acute_cases.html
+    """
+    return render_template('acute_cases.html', acute_cases=load_acute_cases())
 
 
 @app.route('/acute-case/<slug>')
 def acute_case_detail(slug):
-    cases = load_acute_cases()
-    case = next((c for c in cases if c['slug'] == slug), None)
+    """Страница детализации острого случая.
+    - Ищет случай по slug
+    - Возвращает 404 при отсутствии
+    - Отображает шаблон acute_case_detail.html
+    """
+    case = next((c for c in load_acute_cases() if c['slug'] == slug), None)
     if not case:
         return "Case not found", 404
-
-    return render_template(
-        'acute_case_detail.html',
-        case=case
-    )
+    return render_template('acute_case_detail.html', case=case)
 
 
 @app.route('/category')
 def category():
+    """Страница категорий (типы/миазмы).
+    - Загружает классифицированные категории
+    - Отображает шаблон category.html
+    """
     categories = load_category()
-    return render_template(
-        'category.html',
-        types=categories['types'],
-        miasms=categories['miasms']
-    )
+    return render_template('category.html',
+                           types=categories['types'],
+                           miasms=categories['miasms'])
 
 
-@app.route('/category/<slug>')
+# Явно задаем имя endpoint, чтобы избежать конфликта
+@app.route('/category/<slug>', endpoint='category_detail')
 def category_detail(slug):
+    """Страница детализации категории.
+    - Ищет категорию по slug среди типов и миазмов
+    - Возвращает 404 при отсутствии
+    - Отображает шаблон category_detail.html
+    """
     categories = load_category()
-    # Ищем в обоих подкатегориях
     all_items = categories['types'] + categories['miasms']
     item = next((item for item in all_items if item['slug'] == slug), None)
-
     if not item:
         return "Item not found", 404
-
-    return render_template(
-        'category_detail.html',
-        category=item
-    )
+    return render_template('category_detail.html', category=item)
 
 
 @app.route('/reference')
 def reference():
-    materials = load_reference_materials()
-    return render_template(
-        'reference.html',
-        materials=materials
-    )
+    """Страница справочных материалов.
+    - Загружает все справочные материалы
+    - Отображает шаблон reference.html
+    """
+    return render_template('reference.html', materials=load_reference_materials())
 
 
 @app.route('/reference/<slug>')
 def reference_detail(slug):
-    materials = load_reference_materials()
-    material = next((m for m in materials if m['slug'] == slug), None)
-
+    """Страница детализации справочного материала.
+    - Ищет материал по slug
+    - Возвращает 404 при отсутствии
+    - Отображает шаблон reference_detail.html
+    """
+    material = next((m for m in load_reference_materials() if m['slug'] == slug), None)
     if not material:
         return "Material not found", 404
-
-    return render_template(
-        'reference_detail.html',
-        material=material
-    )
+    return render_template('reference_detail.html', material=material)
 
 
 @app.route('/glossary')
 def glossary():
-    terms = load_glossary_terms()
-    return render_template(
-        'glossary.html',
-        terms=terms
-    )
+    """Страница глоссария.
+    - Загружает и сортирует термины
+    - Отображает шаблон glossary.html
+    """
+    return render_template('glossary.html', terms=load_glossary_terms())
 
 
 @app.route('/static/images/<filename>')
 def uploaded_file(filename):
+    """Отдача статических изображений.
+    - Возвращает файлы из настроенной папки UPLOAD_FOLDER
+    - Используется для отображения загруженных изображений
+    """
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)

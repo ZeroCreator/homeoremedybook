@@ -1,3 +1,13 @@
+<style>
+.sources-section { background-color: #f8f9fa; border-left: 4px solid #d1d9d0; padding: 20px; margin-bottom: 25px; border-radius: 0 8px 8px 0; }
+.sources-section h2 { color: #2c3e50; margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #d1d9d0; }
+.sources-section .section-list { columns: 1; padding-left: 20px; }
+.sources-section .section-list li { margin-bottom: 12px; position: relative; padding-left: 2em; line-height: 1.6; list-style-type: none; }
+.sources-section .section-list li::before { content: "•"; color: #0288d1; position: absolute; left: 0; font-weight: bold; font-size: 1.2em; }
+.sources-section a { color: #6b8e7e; text-decoration: none; border-bottom: 1px solid #6b8e7e; transition: all 0.2s ease; padding-bottom: 1px; }
+.sources-section a:hover { color: #01579b; border-bottom-color: #0288d1; }
+</style>
+
 {% if meta is defined and meta.get('sources') %}
 <div class="card-section sources-section">
     <h2>Источники</h2>

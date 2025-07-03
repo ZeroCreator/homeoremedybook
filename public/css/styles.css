@@ -162,27 +162,6 @@ body {
 }
 
 /* ==================== КАРТОЧКИ ==================== */
-/* Стили для карточек на главной */
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-/* Предпросмотр карточки */
-.product-card-preview {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.product-card-preview:hover {
-    transform: translateY(-3px);
-}
-
-/* ==================== ЗАГОЛОВОК КАРТОЧКИ ==================== */
 .card-header {
     text-align: center;
     margin-bottom: 30px;
@@ -250,7 +229,6 @@ body {
     flex-direction: column;
 }
 
-/* Заголовки карточек */
 .card-preview h3 {
     padding: 0;
     margin: 0 0 8px 0;
@@ -385,260 +363,21 @@ body {
     padding: 10px;
 }
 
-/* Контейнер для модальностей */
-.modalities-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 15px;
-}
-
-/* Колонки для модальностей */
-.modality-column {
-    width: 100%;
-}
-
-/* Стили для десктопной версии */
-@media (min-width: 768px) {
-    .modalities-container {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 3rem;
-    }
-
-    .deterioration-column,
-    .improvement-column {
-        width: calc(50% - 1.5rem);
-    }
-
-    .deterioration-column {
-        padding-right: 0;
-    }
-
-    .improvement-column {
-        padding-left: 0.5rem;
-    }
-}
-
 /* Стили для подсекций */
 .symptoms-subsection {
     margin-bottom: 1rem;
-}
-
-.symptoms-subsection h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: #2d3748;
-    padding-bottom: 0.25rem;
-}
-
-/* Список в ОДНУ колонку */
-.single-column-list {
-    padding-left: 20px;
-    color: #4a6b82;
-    list-style-type: disc;
-}
-
-.single-column-list li {
-    margin-bottom: 8px;
-    position: relative;
-}
-
-/* Выравнивание колонок по верхнему краю */
-.modality-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.symptoms-subsection {
     flex-grow: 1;
-}
-
-/* Секция ключевых слов */
-.keywords-section {
-    position: relative;
-    padding-right: 300px;
-    min-height: 200px;
-}
-
-.keywords-section .section-content {
-    width: 100%;
-    padding-right: 20px;
-    box-sizing: border-box;
-}
-
-.keywords-section .section-image-wrapper {
-    position: absolute;
-    right: 0;
-    top: 50px;
-    width: 280px;
-}
-
-.keywords-section .section-image {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-    object-fit: contain;
-}
-
-.symptoms-section {
-    margin-bottom: 2rem;
-}
-
-.symptoms-subsection {
     margin-bottom: 1.5rem;
 }
 
 .symptoms-subsection h3 {
     font-size: 1.2rem;
+    font-weight: 600;
     margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    color: #444;
-    border-bottom: 1px solid #d1d9d0;
-    font-weight: 600;
-}
-
-/* Секция источников */
-.sources-section {
-    background-color: #f8f9fa;
-    border-left: 4px solid #d1d9d0;
-    padding: 20px;
-    margin-bottom: 25px;
-    border-radius: 0 8px 8px 0;
-}
-
-.sources-section h2 {
-    color: #2c3e50;
-    margin-top: 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #d1d9d0;
-}
-
-.sources-section .section-list {
-    columns: 1;
-    padding-left: 20px;
-}
-
-.sources-section .section-list li {
-    margin-bottom: 12px;
-    position: relative;
-    padding-left: 2em;
-    line-height: 1.6;
-    list-style-type: none;
-}
-
-.sources-section .section-list li::before {
-    content: "•";
-    color: #0288d1;
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.sources-section a {
-    color: #6b8e7e;
-    text-decoration: none;
-    border-bottom: 1px solid #6b8e7e;
-    transition: all 0.2s ease;
-    padding-bottom: 1px;
-}
-
-.sources-section a:hover {
-    color: #01579b;
-    border-bottom-color: #0288d1;
-}
-
-/* Основные стили для кастомных блоков */
-.custom-block {
-    margin: 1.5rem 0;
-}
-
-.custom-block-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.custom-block-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    background: #f8f8f8;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.custom-block-image img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-}
-
-.image-caption {
-    font-size: 0.875rem;
-    color: #6b7280;
-    text-align: center;
-    margin-top: 0.75rem;
-    line-height: 1.4;
-}
-
-.custom-block-content {
-    width: 100%;
-    line-height: 1.7;
-    color: #333;
-}
-
-.custom-block-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: #2d3748;
-}
-
-.custom-block-text {
-    line-height: 1.7;
-}
-
-/* Адаптация для десктопов */
-@media (min-width: 768px) {
-    .custom-block-inner {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Две равные колонки */
-        gap: 2.5rem; /* Расстояние между колонками */
-        align-items: center;
-    }
-
-    .custom-block-image {
-        height: 100%;
-        padding: 20px;
-        margin: 0;
-    }
-
-    .custom-block-content {
-        padding-left: 1.5rem; /* Отступ от центральной линии */
-        border-left: 1px solid #eaeaea; /* Визуальное разделение */
-    }
-}
-
-/* Убираем лишние отступы */
-.custom-block-text > *:first-child {
-    margin-top: 0;
-}
-
-.custom-block-text > *:last-child {
-    margin-bottom: 0;
-}
-
-/* Отступы для элементов */
-.custom-block-text p,
-.custom-block-text ul,
-.custom-block-text ol {
-    margin: 0.75rem 0;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #d1d9d0;
 }
 
 /* ==================== ИЗОБРАЖЕНИЯ ==================== */
@@ -689,48 +428,6 @@ body {
     font-style: italic;
     margin-top: 0.5rem;
     line-height: 1.4;
-}
-
-/* ==================== КАТЕГОРИИ И АТРИБУТЫ ==================== */
-/* Контейнер категорий */
-.card-categories-container {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0 30px 0;
-    padding: 15px 0;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    width: 100%;
-}
-
-.card-categories {
-    display: flex;
-    width: 100%;
-    max-width: 900px;
-    justify-content: space-between;
-    flex: 1 1 0;
-    gap: 8px;
-}
-
-.category-item {
-    display: flex;
-    flex: 1;
-    min-width: 200px;
-    justify-content: center;
-    align-items: baseline;
-    gap: 8px;
-}
-
-.category-label {
-    font-weight: 600;
-    font-style: italic;
-    font-size: 1.1em;
-    color: #555;
-}
-
-.category-value {
-    color: #333;
-    font-size: 1.05em;
 }
 
 /* Сетка атрибутов */

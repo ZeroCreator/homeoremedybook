@@ -7,6 +7,7 @@ base_description: Фосфор
 image: phosphor.jpg
 miasm: Туберкулез, Псора, Сикоз
 group: Минеральное царство
+
 description:
   - Это очень восприимчивые, чувствительные люди. 
   - Они открыты и не могут это изменить. 
@@ -43,6 +44,7 @@ modalities:
     - После сна 
     - От ласки и сочувствия 
     - После еды
+    
 keywords:
 personality: |
   #### Характерные особенности:
@@ -106,14 +108,16 @@ personality_images:
   - phosphorus_person-1.jpg
   - phosphorus_person-2.webp
 personality_captions: 
-  - Пьер Безухов "Война и мир"
-  - Манилов "Мертвые души"
+  - Шурик «Операция «Ы» и другие приключения Шурика»
+  - Карлсон
+  
 sources:
   - text: Сайт Новосибирского гомеопатического центра
     url: https://homeopatia-nsk.ru/o-gomeopatii/gomeopaticheskie-preparaty-prosto-i-ponyatno/361-fosfor-v-gomeopatii-phosphorus.html
   - text: Издательство "Гомеопатическая книга"
     url: https://www.homeobooks.ru/blog/post/4974.html
 ---
+
 ##Phosphorus
 Статья из цикла «Основные детские лекарства в гомеопатической практике» | Гомеопатия
 6 декабря 2014

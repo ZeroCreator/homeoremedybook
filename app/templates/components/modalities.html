@@ -21,7 +21,7 @@
             <div class="modality-column deterioration-column">
                 {% if meta.modalities.get('deterioration') %}
                 <div class="symptoms-subsection">
-                    <h3>Ухудшение:</h3>
+                    <h3>🔴 Ухудшение:</h3>
                     <div class="section-content">
                         {% if meta.modalities.deterioration is string %}
                             {{ meta.modalities.deterioration|markdown|safe }}
@@ -40,7 +40,7 @@
             <div class="modality-column improvement-column">
                 {% if meta.modalities.get('improvement') %}
                 <div class="symptoms-subsection">
-                    <h3>Улучшение:</h3>
+                    <h3>🟢 Улучшение:</h3>
                     <div class="section-content">
                         {% if meta.modalities.improvement is string %}
                             {{ meta.modalities.improvement|markdown|safe }}

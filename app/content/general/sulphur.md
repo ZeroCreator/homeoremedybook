@@ -6,7 +6,7 @@ cirillic:
 base_description: Сера
 image: sulphur.jpg
 miasm: Псора
-group: Минеральное царство
+group: Минерал
 
 description:
   - Сильный энергетический тип.

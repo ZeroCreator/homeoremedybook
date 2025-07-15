@@ -6,7 +6,7 @@ cirillic:
 base_description: Фосфор
 image: phosphor.jpg
 miasm: Туберкулез, Псора, Сикоз
-group: Минеральное царство
+group: Минерал
 
 description:
   - Это очень восприимчивые, чувствительные люди. 

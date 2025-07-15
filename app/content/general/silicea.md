@@ -207,6 +207,8 @@ personality_captions:
 sources:
   - text: Vidal
     url: https://www.vidal.ru/drugs/silicea-3
+  - text: Материалы профкурса Via Homeopatica
+    url: https://viahomeopatica.ru/
 ---
 
 ### Основные случаи клинического применения

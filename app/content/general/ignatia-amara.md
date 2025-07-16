@@ -1,6 +1,6 @@
 ---
-title: Ignatia amara
-slug: ignatia amara
+title: Ignatia Amara
+slug: ignatia
 category: general
 cirillic: Игнация амара
 base_description:  Игнация горькая, Чилибуха, бобы Святого Игнация. Семейство Логаниевые (Loganiaceae)
@@ -93,7 +93,7 @@ personality: |
   - Оба — о невыносимой боли, но Ignatia не способна на месть, только на саморазрушение.
   
   **Вывод:**<br>
-  Ignatia — это женские образы с «разбитым сердцем», которые не мстят, а страдают красиво, с надрывом. Их главное оружие — не нож, а слёзы.
+  ❗️Ignatia — это женские образы с «разбитым сердцем», которые не мстят, а страдают красиво, с надрывом. Их главное оружие — не нож, а слёзы.
 personality_images:
   - ignatia-amara_person-1.webp
   - ignatia-amara_person-2.png

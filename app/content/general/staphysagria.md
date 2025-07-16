@@ -171,12 +171,14 @@ personality: |
   *Пример*: Отелло<br>
   - «Платок… клянусь!» → удушение Дездемоны<br>
   - Ревность как открытая рана<br>
+  
 personality_images: 
   - staphysagria_person-1.jpg
   - staphysagria_person-2.jpg
 personality_captions:
   - Тайлер Дёрден («Бойцовский клуб»)
   - Джон Уик
+
 sources:
   - text: Сайт kiberis
     url: https://kiberis.ru/?p=182&a=19&lang=ru

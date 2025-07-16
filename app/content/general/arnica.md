@@ -1,5 +1,5 @@
 ---
-title: Arnica montana
+title: Arnica Montana
 slug: arnica
 category: general
 cirillic: Арника

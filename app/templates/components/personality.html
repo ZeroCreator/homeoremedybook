@@ -1,10 +1,27 @@
 {% if meta is defined and meta.get('personality') %}
-    {% with
-        title='Тип личности',
-        content=meta.personality,
-        images=meta.get('personality_images'),
-        captions=meta.get('personality_captions')
-    %}
-        {% include 'components/section.html' %}
-    {% endwith %}
+    <div class="personality-container">
+        {% with
+            title='Тип личности',
+            content=meta.personality,
+            images=meta.get('personality_images'),
+            captions=meta.get('personality_captions')
+        %}
+            {% include 'components/section.html' %}
+        {% endwith %}
+    </div>
+
+    <style>
+        .personality-container .card-section {
+            display: flex;
+            flex-direction: column;
+        }
+        .personality-container .section-content {
+            order: 1;
+        }
+        .personality-container .section-image-wrapper,
+        .personality-container .section-images-wrapper {
+            order: 2;
+            margin-top: 1.5rem;
+        }
+    </style>
 {% endif %}

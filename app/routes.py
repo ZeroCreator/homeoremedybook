@@ -190,7 +190,7 @@ def glossary():
     return render_template('glossary.html', terms=load_glossary_terms())
 
 
-@app.route('/static/images/<filename>')
+@app.route('/images/<filename>')
 def uploaded_file(filename):
     """Отдача статических изображений.
     - Возвращает файлы из настроенной папки UPLOAD_FOLDER

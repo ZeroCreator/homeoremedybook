@@ -28,11 +28,6 @@
             {% include 'components/remedy_miasms.html' %}
         {% endwith %}
 
-        <!-- Дополнительная информация -->
-        {% with meta=card.meta %}
-            {% include 'components/custom_blocks.html' %}
-        {% endwith %}
-
         <!-- Симптомы -->
         {% with meta=card.meta %}
             {% include 'components/symptoms.html' %}
@@ -56,6 +51,11 @@
         <!-- Тип личности -->
         {% with meta=card.meta %}
             {% include 'components/personality.html' %}
+        {% endwith %}
+
+        <!-- Дополнительная информация -->
+        {% with meta=card.meta %}
+            {% include 'components/custom_blocks.html' %}
         {% endwith %}
 
         <!-- Источники -->

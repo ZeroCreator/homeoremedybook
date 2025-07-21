@@ -7,6 +7,7 @@ base_description: Устричная известь (скорлупа устри
 image: calcarea-carbonica.jpg
 miasm: Туберкулез, Псора
 group: Минерал
+
 description: 
   - Этот препарат - один из наиболее часто используемых в лечении детей.
   - У ребёнка потеет голова. Волосы становятся мокрыми чаще всего в самом начале сна. При этом, ребёнок любит сладкое и желток яиц. Чаще жидкий. 
@@ -20,6 +21,7 @@ description:
   - Характерны ночные судороги, усталость.
   - ациенты калькареи упорны. Им проще доделать дело и упасть в изнеможении, чем отдохнуть и продолжить.
   - Часто калькарея карбоника хорошо лечит сорванную от поднятия тяжести спину.
+
 symptoms:
   
 modalities: >
@@ -80,12 +82,14 @@ personality: |
   3. *Акт (Прорыв/Крах):*<br>
   — Вариант 1: Находит силу в простоте (как Форрест Гамп).<br>
   — Вариант 2: Становится злым толстяком-тираном (как Долорес Амбридж).
+
 personality_images: 
   - calcarea-carbonica_person-1.png
   - calcarea-carbonica_person-2.png
 personality_captions:
   - «Вверх»
   - «Обломов»
+
 sources:
   - text: Сайт Новосибирского гомеопатического центра
     url: https://homeopatia-nsk.ru/o-gomeopatii/gomeopaticheskie-preparaty-prosto-i-ponyatno/335-kalkareya-karbonika-v-gomeopatii-calkarea-carbonica.html

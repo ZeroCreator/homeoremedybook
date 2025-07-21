@@ -185,6 +185,7 @@ personality_images:
 personality_captions: 
   - Голлум ("Властелин Колец")
   - Джокер ("Тёмный рыцарь")
+
 sources:
   - text: Vidal
     url: https://www.vidal.ru/drugs/silicea-3

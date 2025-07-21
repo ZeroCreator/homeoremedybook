@@ -23,6 +23,11 @@
             {% include 'components/description.html' %}
         {% endwith %}
 
+        <!-- Описание миазмов препарата-->
+        {% with meta=card.meta %}
+            {% include 'components/remedy_miasms.html' %}
+        {% endwith %}
+
         <!-- Дополнительная информация -->
         {% with meta=card.meta %}
             {% include 'components/custom_blocks.html' %}
@@ -41,6 +46,11 @@
         <!-- Ключи -->
         {% with meta=card.meta %}
             {% include 'components/keywords.html' %}
+        {% endwith %}
+
+        <!-- Характеристики -->
+        {% with meta=card.meta %}
+            {% include 'components/characteristic.html' %}
         {% endwith %}
 
         <!-- Тип личности -->

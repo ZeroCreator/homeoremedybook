@@ -1,0 +1,63 @@
+<style>
+.custom-block-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+.custom-block-image { display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; background: #f8f8f8; padding: 15px; border-radius: 8px; }
+.custom-block-image img { max-width: 100%; height: auto; object-fit: contain; display: block; }
+.image-caption { font-size: 0.875rem; color: #6b7280; text-align: center; margin-top: 0.75rem; line-height: 1.4; }
+.custom-block-content { width: 100%; line-height: 1.7; color: #333; }
+.custom-block-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #2d3748; }
+.custom-block-text { line-height: 1.7; }
+@media (min-width: 768px) {
+    .custom-block-inner.with-image { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+    .custom-block-inner.without-image .custom-block-content { max-width: 100%; padding: 0; border-left: none; }
+    .custom-block-image { height: 100%; padding: 20px; margin: 0; }
+    .custom-block-content { padding-left: 1.5rem; border-left: 1px solid #eaeaea; }
+}
+.custom-block-text > *:first-child { margin-top: 0; }
+.custom-block-text > *:last-child { margin-bottom: 0; }
+.custom-block-text p,
+.custom-block-text ul,
+.custom-block-text ol { margin: 0.75rem 0; }
+</style>
+
+{% if meta is defined and meta.get('remedy_miasms') %}
+    {% with
+        title='Миазмы препарата',
+        custom_blocks=meta.remedy_miasms
+    %}
+        <div class="card-section">
+            {% if title is defined %}
+                <h2>{{ title }}</h2>
+            {% endif %}
+
+            {% for block in custom_blocks %}
+                <div class="custom-block">
+                    <div class="custom-block-inner {% if block.image %}with-image{% else %}without-image{% endif %}">
+                        {% if block.image %}
+                        <div class="custom-block-image">
+                            <img
+                                src="{{ url_for('static', filename='images/' + block.image) }}"
+                                alt="{{ block.alt|default('Custom image') }}"
+                            >
+                            {% if block.caption %}
+                            <p class="image-caption">{{ block.caption }}</p>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        <div class="custom-block-content">
+                            {% if block.title %}
+                            <h3 class="custom-block-title">{{ block.title }}</h3>
+                            {% endif %}
+
+                            {% if block.content %}
+                            <div class="custom-block-text">
+                                {{ block.content|markdown|safe }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endwith %}
+{% endif %}

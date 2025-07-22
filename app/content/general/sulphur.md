@@ -278,10 +278,12 @@ personality_captions:
   - Илья Ильич Обломов
   
 sources:
-  - text: Материалы профкурса Via Homeopatica
-    url: https://viahomeopatica.ru/
   - text: Вселенная гомеопатии
     url: https://www.spacehom.ru/tpost/2htxudmcu1-sera-s-zoloto-psori
+  - text: Материалы профкурса Via Homeopatica
+    url: https://viahomeopatica.ru/
+  - text: Telegram-канал "Гомеопатия - Наука и Искусство"
+    url: https://t.me/EBH_ru/1206
 ---
 
 ---

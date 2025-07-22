@@ -228,6 +228,10 @@ sources:
     url: https://kiberis.ru/?p=182&a=19&lang=ru
   - text: Сайт гомеопатического центра "ОЛЛО" 
     url: http://ollo.norna.ru/DIR00/2673.htm
+  - text: Материалы профкурса Via Homeopatica
+    url: https://viahomeopatica.ru/
+  - text: Telegram-канал "Гомеопатия - Наука и Искусство"
+    url: https://t.me/EBH_ru/999
 ---
 
 **ХАРАКТЕРИСТИКА**

@@ -151,6 +151,10 @@ sources:
     url: https://homeopatia-nsk.ru/o-gomeopatii/gomeopaticheskie-preparaty-prosto-i-ponyatno/335-kalkareya-karbonika-v-gomeopatii-calkarea-carbonica.html
   - text: Сайт Доктор Н
     url: https://www.doctor-n.ru/homeopat/prepar/list_one_component.shtml?number=94
+  - text: Материалы профкурса Via Homeopatica
+    url: https://viahomeopatica.ru/
+  - text: Telegram-канал "Гомеопатия - Наука и Искусство"
+    url: https://t.me/EBH_ru/1067
 ---
 Описание
 

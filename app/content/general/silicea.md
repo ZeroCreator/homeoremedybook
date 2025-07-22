@@ -247,6 +247,10 @@ sources:
     url: https://www.vidal.ru/drugs/silicea-3
   - text: Материалы профкурса Via Homeopatica
     url: https://viahomeopatica.ru/
+  - text: Материалы профкурса Via Homeopatica
+    url: https://viahomeopatica.ru/
+  - text: Telegram-канал "Гомеопатия - Наука и Искусство"
+    url: https://t.me/EBH_ru/871
 ---
 
 ### Основные случаи клинического применения

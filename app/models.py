@@ -180,7 +180,8 @@ def load_acute_cases():
     - Возвращает список готовых к отображению случаев
     """
     folder = current_app.config['ACUTE_CASES_FOLDER']
-    return load_md_files(folder, process_acute_case)
+    items = load_md_files(folder, process_acute_case)
+    return sorted(items, key=lambda x: (x.get('name') or '').lower())
 
 
 def load_category():

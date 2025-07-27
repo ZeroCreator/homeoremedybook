@@ -5,7 +5,7 @@ category: general
 cirillic: Сульфур
 base_description: Сера
 image: sulphur.jpg
-miasm: Псора
+miasm: Псора, Сикоз
 group: Минерал
 
 description:

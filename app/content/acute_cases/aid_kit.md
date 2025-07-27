@@ -1,5 +1,5 @@
 ---
-name: Аптечка
+name: 0_Аптечка
 slug: aid_kit
 image: aid_kit.jpg
 ---

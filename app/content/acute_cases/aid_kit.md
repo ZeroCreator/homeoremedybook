@@ -1,5 +1,5 @@
 ---
-name: 0_Аптечка
+name: _Аптечка_
 slug: aid_kit
 image: aid_kit.jpg
 ---
@@ -16,13 +16,17 @@ image: aid_kit.jpg
 
 - Arsenicum album C30, C200
 - Bacillus sycoccus C30
+- Belladonna C30
+- Calcarea carbonica C30
 - Cuprum metallicum C30
 - Iris C30, C200
 - Kalium bichromicum C6
+- Licopodium C200
 - Natrium muriaticum C30, C200, C1000
 - Sepia C30, C200, C1000
 - Staphisagria C30, C200
 - Stramonium C200
+- Ruta C30
 
 **Доктор Н**
 

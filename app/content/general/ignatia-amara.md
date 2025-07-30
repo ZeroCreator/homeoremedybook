@@ -172,4 +172,5 @@ sources:
     url: https://viahomeopatica.ru/
   - text: Telegram-канал "Гомеопатия - Наука и Искусство"
     url: https://t.me/EBH_ru/719
+  - text: А.Готе, Дж. Дринненберг "Гомеопатические картины"
 ---

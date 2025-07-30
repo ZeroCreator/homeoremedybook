@@ -6,7 +6,7 @@ cirillic:
 base_description: Фосфор
 image: phosphor.jpg
 miasm: Туберкулез, Псора, Сикоз
-group: Минерал
+group: Минералы
 
 description:
   - Это очень восприимчивые, чувствительные люди. 
@@ -154,6 +154,7 @@ sources:
     url: https://www.homeobooks.ru/blog/post/4974.html
   - text: Telegram-канал "Гомеопатия - Наука и Искусство"
     url: https://t.me/EBH_ru/1254
+  - text: А.Готе, Дж. Дринненберг "Гомеопатические картины"
 ---
 ##Phosphorus
 

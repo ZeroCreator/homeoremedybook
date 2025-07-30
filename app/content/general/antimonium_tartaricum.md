@@ -2,11 +2,11 @@
 title: Antimonium Tartaricum
 slug: antimonium
 category: general
-cirillic: Антимониум тартарикум, Рвотный камень, Apis Antimonium tartaricum /Tartarus emeticus/ /Tartarus stibiatus/ (Антимониум тартарикум /Тартарус эметикус/Тартарус стибиатус/ ) 
-base_description: (Ant-t.)  
+cirillic: Антимониум тартарикум
+base_description: Антимониум тартарикум (Ant-t.), Рвотный камень 
 image: antimonium.jpg
 miasm: Сикоз, Туберкулез
-group: Минерал
+group: Минералы
 
 description: 
   - Основное влияние антимониума тартарикума направлено на блуждающий нерв. 

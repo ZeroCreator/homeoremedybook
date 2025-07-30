@@ -6,7 +6,7 @@ cirillic: Меркуриус солюбилис
 base_description: Ртуть (Hg)
 image: mercurius.jpg
 miasm: Сифилис, Сикоз
-group: Минерал
+group: Минералы
 
 description:
   - Препарат для острых и хронических состояний с деструкцией тканей и интоксикацией.

@@ -6,7 +6,7 @@ cirillic: Калькарея карбоника
 base_description: Устричная известь (скорлупа устриц)
 image: calcarea-carbonica.jpg
 miasm: Туберкулез, Псора
-group: Минерал
+group: Минералы
 
 description: 
   - Этот препарат - один из наиболее часто используемых в лечении детей.

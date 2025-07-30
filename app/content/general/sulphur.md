@@ -6,7 +6,7 @@ cirillic: Сульфур
 base_description: Сера
 image: sulphur.jpg
 miasm: Псора, Сикоз
-group: Минерал
+group: Минералы
 
 description:
   - Сильный энергетический тип.
@@ -292,6 +292,7 @@ sources:
     url: https://viahomeopatica.ru/
   - text: Telegram-канал "Гомеопатия - Наука и Искусство"
     url: https://t.me/EBH_ru/1206
+  - text: А.Готе, Дж. Дринненберг "Гомеопатические картины"
 ---
 
 ---

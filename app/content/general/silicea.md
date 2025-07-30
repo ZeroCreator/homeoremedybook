@@ -6,7 +6,7 @@ cirillic: Силицея
 base_description: Кремний (Двуокись кремния) / Песок
 image: silicea.jpg
 miasm: Сикоз, Псора, Туберкулез
-group: Минерал
+group: Минералы
 
 description:
   - Личность, отношения, я и другие (3 ряд)
@@ -259,6 +259,7 @@ sources:
     url: https://viahomeopatica.ru/
   - text: Telegram-канал "Гомеопатия - Наука и Искусство"
     url: https://t.me/EBH_ru/871
+  - text: А.Готе, Дж. Дринненберг "Гомеопатические картины"
 ---
 
 ### Основные случаи клинического применения

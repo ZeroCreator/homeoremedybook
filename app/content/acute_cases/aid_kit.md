@@ -14,6 +14,7 @@ image: aid_kit.jpg
 
 **Гутта**
 
+- Arnica montana C30, C200
 - Arsenicum album C30, C200
 - Bacillus sycoccus C30
 - Belladonna C30
@@ -21,11 +22,13 @@ image: aid_kit.jpg
 - Cuprum metallicum C30
 - Iris C30, C200
 - Kalium bichromicum C6
-- Licopodium C200
+- Licopodium C200, LM-1
 - Natrium muriaticum C30, C200, C1000
 - Sepia C30, C200, C1000
 - Staphisagria C30, C200
 - Stramonium C200
+- Sulphur LM-1
+- Rhus toxicodendron C30, C200
 - Ruta C30
 
 **Доктор Н**

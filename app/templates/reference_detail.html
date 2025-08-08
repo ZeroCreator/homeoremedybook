@@ -71,4 +71,8 @@
             </div>
         {% endif %}
     </div>
+    <!-- Источники -->
+    {% with meta=material.meta %}
+        {% include 'components/sources.html' %}
+    {% endwith %}
 {% endblock %}

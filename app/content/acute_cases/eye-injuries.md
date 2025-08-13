@@ -1,13 +1,11 @@
 ---
 name: Скорая помощь при травме глаза
-slug: eye-injury
+slug: eye-injuries
 image: eye-injury.jpg
 sources:
   - text: Материалы профкурса Via Homeopatica
     url: https://viahomeopatica.ru/
 ---
-#### Травмы глаза, рубрика
-
 #### Гомеопатическое лечение травмы глаза:
 
 1. **Аконит**, **Aconitum napellus**, Acon.<br> 

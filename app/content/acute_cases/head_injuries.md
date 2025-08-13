@@ -1,6 +1,6 @@
 ---
 name: Травма головы
-slug: head_injury
+slug: head_injuries
 image: head_injury.jpg
 sources:
   - text: Материалы профкурса Via Homeopatica

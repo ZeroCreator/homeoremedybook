@@ -43,7 +43,7 @@ miasm:
 group: 
 
 key_characteristic: |
-  ##
+  ###
 
 description:
   -

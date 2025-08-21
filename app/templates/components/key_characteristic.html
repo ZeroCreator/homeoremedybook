@@ -1,0 +1,23 @@
+<style>
+.characteristic-block {
+    border-left: 4px solid #006400;
+    border-bottom: 1px solid #c0c0c0; /* Тонкая окантовка снизу */
+    color: #195e47;
+    font-style: italic;
+    padding: 10px 30px;
+    margin: 20px 0;
+    background-color: #e9ecef;
+    line-height: 1.6;
+    border-top-right-radius: 8px; /* Сглаживание углов справа */
+    border-bottom-right-radius: 8px;
+}
+.characteristic-block strong {
+    color: #002e1e;
+}
+</style>
+
+{% if meta is defined and meta.get('key_characteristic') %}
+<div class="characteristic-block">
+    {{ meta.key_characteristic|markdown|safe }}
+</div>
+{% endif %}

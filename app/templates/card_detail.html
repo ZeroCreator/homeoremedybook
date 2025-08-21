@@ -18,6 +18,11 @@
             {% include 'components/meta.html' %}
         {% endwith %}
 
+        <!-- Ключевая характеристика -->
+        {% with meta=card.meta %}
+            {% include 'components/key_characteristic.html' %}
+        {% endwith %}
+
         <!-- Описание -->
         {% with meta=card.meta %}
             {% include 'components/description.html' %}
@@ -51,6 +56,11 @@
         <!-- Тип личности -->
         {% with meta=card.meta %}
             {% include 'components/personality.html' %}
+        {% endwith %}
+
+        <!-- Культурные архетипы -->
+        {% with meta=card.meta %}
+            {% include 'components/сultural_аrchetypes.html' %}
         {% endwith %}
 
         <!-- Дополнительная информация -->

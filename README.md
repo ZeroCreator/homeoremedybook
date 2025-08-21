@@ -42,6 +42,9 @@ image:
 miasm: 
 group: 
 
+key_characteristic: |
+  ##
+
 description:
   -
 
@@ -83,6 +86,10 @@ custom_blocks:
 personality: |
 personality_images:
 personality_captions:
+
+сultural_аrchetypes: |
+сultural_аrchetypes_images:
+сultural_аrchetypes_captions:
 
 sources:
   - text:

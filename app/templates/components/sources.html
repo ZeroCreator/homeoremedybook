@@ -2,17 +2,6 @@
 <div class="card-section sources-section">
     <h2>Источники</h2>
 
-    {% if meta.get('sources_image') %}
-    <div class="section-image-wrapper">
-        <img src="{{ url_for('static', filename='images/' + meta.sources_image) }}"
-             alt="Источники"
-             class="section-image">
-        {% if meta.get('sources_image_caption') %}
-        <p class="image-caption">{{ meta.sources_image_caption }}</p>
-        {% endif %}
-    </div>
-    {% endif %}
-
     <ul class="section-list">
         {% for source in meta.sources %}
             <li>

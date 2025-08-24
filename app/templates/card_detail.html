@@ -28,14 +28,34 @@
             {% include 'components/description.html' %}
         {% endwith %}
 
+        <!-- Клинические показания -->
+        {% with meta=card.meta %}
+            {% include 'components/clinical_indications.html' %}
+        {% endwith %}
+
+        <!-- Этиология -->
+        {% with meta=card.meta %}
+            {% include 'components/etiology.html' %}
+        {% endwith %}
+
         <!-- Описание миазмов препарата-->
         {% with meta=card.meta %}
             {% include 'components/remedy_miasms.html' %}
         {% endwith %}
 
+        <!-- Физические симптомы по системам -->
+        {% with meta=card.meta %}
+            {% include 'components/symptoms_by_system.html' %}
+        {% endwith %}
+
         <!-- Симптомы -->
         {% with meta=card.meta %}
             {% include 'components/symptoms.html' %}
+        {% endwith %}
+
+        <!-- Сферы применения -->
+        {% with meta=card.meta %}
+            {% include 'components/application.html' %}
         {% endwith %}
 
         <!-- Модальности -->
@@ -48,9 +68,19 @@
             {% include 'components/keywords.html' %}
         {% endwith %}
 
-        <!-- Характеристики -->
+        <!-- Характеристика -->
         {% with meta=card.meta %}
             {% include 'components/characteristic.html' %}
+        {% endwith %}
+
+        <!-- Дифференциальная диагностика -->
+        {% with meta=card.meta %}
+            {% include 'components/differential_diagnosis.html' %}
+        {% endwith %}
+
+        <!-- Антидоты -->
+        {% with meta=card.meta %}
+            {% include 'components/antidotes.html' %}
         {% endwith %}
 
         <!-- Тип личности -->

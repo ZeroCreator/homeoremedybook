@@ -1,0 +1,25 @@
+{% if meta is defined and meta.get('differential_diagnosis') %}
+    <div class="personality-container">
+        {% with
+            title='Дифференциальная диагностика',
+            content=meta.differential_diagnosis
+        %}
+            {% include 'components/section.html' %}
+        {% endwith %}
+    </div>
+
+    <style>
+        .personality-container .card-section {
+            display: flex;
+            flex-direction: column;
+        }
+        .personality-container .section-content {
+            order: 1;
+        }
+        .personality-container .section-image-wrapper,
+        .personality-container .section-images-wrapper {
+            order: 2;
+            margin-top: 1.5rem;
+        }
+    </style>
+{% endif %}

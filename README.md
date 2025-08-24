@@ -29,8 +29,36 @@ find . -name "*.pyc" -delete
 
 https://homeoremedybook.vercel.app/
 
----
+
 ### Карточка препарата
+Заголовок: Наименование
+Мета-информация:
+- Наименование на русском
+- Названия и семейство (для растений)
+- Изображение
+- Миазм
+- Категория
+
+Ключевая характеристика
+Описание
+Клинические показания
+Этиология
+Описание миазмов препарата
+Физические симптомы по системам
+Характерные симптомы
+- Общие
+- Психические
+- Особенные
+Сферы применения
+Модальности
+Ключи
+Характеристика
+Дифференциальная диагностика
+Антидоты
+Тип личности (пример исторической личности)
+Культурные архетипы (Ключевые черты препарата в кино, мультфильмах и литературе)
+Дополнительная информация (лирические описания и стихотворения)
+Источники
 
 ---
 title: 
@@ -48,11 +76,17 @@ key_characteristic: |
 description:
   -
 
+clinical_indications: |
+
+etiology: |
+
 remedy_miasms:
   - title:
     image:
     alt:
     content: |
+
+symptoms_by_system: |
 
 symptoms:
   common:
@@ -62,6 +96,8 @@ symptoms:
   particular:
     -
 
+application: |
+
 modalities:
   deterioration:
     -
@@ -69,6 +105,7 @@ modalities:
     -
 
 keywords:
+  - 
 keywords_images: 
 keywords_captions:
 
@@ -76,7 +113,10 @@ characteristic: |
 characteristic_images: 
 characteristic_captions:
 
-  
+differential_diagnosis: |
+
+antidotes:
+
 custom_blocks:
   - title:
     image:

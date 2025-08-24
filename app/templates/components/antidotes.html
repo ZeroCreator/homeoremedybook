@@ -1,0 +1,6 @@
+{% if meta is defined and meta.get('antidotes') %}
+<div class="card-section sources-section">
+    <h2>Антидоты</h2>
+    {{ meta.antidotes|markdown|safe }}
+</div>
+{% endif %}

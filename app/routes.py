@@ -41,7 +41,7 @@ def matches_keyword(card, keyword):
     ]
 
     # Обработка списковых полей
-    for field in ['description', 'symptoms', 'keywords']:
+    for field in ['typical_features', 'symptoms', 'keywords']:
         value = card.meta.get(field, [])
         if isinstance(value, list):
             search_fields.append(' '.join(value))

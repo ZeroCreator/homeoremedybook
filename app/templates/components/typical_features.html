@@ -1,0 +1,10 @@
+{% if meta is defined and meta.get('typical_features') %}
+    {% with
+        title='Типичные особенности',
+        content=meta.typical_features,
+        images=meta.get('typical_features_images'),
+        captions=meta.get('typical_features_captions')
+    %}
+        {% include 'components/section.html' %}
+    {% endwith %}
+{% endif %}

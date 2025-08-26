@@ -8,7 +8,7 @@ image: bryonia.jpg
 miasm: Псора, Сикоз
 group: Растения
 
-description:
+typical_features:
   -
 
 remedy_miasms:

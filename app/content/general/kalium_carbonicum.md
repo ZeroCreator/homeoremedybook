@@ -8,7 +8,7 @@ image: kali_carbonicum.jpg
 miasm: 
 group: Минералы
 
-description:
+typical_features:
   -
 
 remedy_miasms:

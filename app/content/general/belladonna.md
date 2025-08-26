@@ -11,7 +11,7 @@ group: Растения
 key_characteristic: |
   ### Belladonna (Белладонна) — это препарат острых, бурных, внезапных состояний.
 
-description:
+typical_features:
   -
 
 remedy_miasms:

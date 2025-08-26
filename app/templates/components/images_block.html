@@ -1,0 +1,11 @@
+{% if meta is defined and meta.get('images_block') %}
+<div class="images-container">
+    <h2>Иллюстрации</h2>
+    {% with
+        images=meta.images_block,
+        captions=meta.get('images_block_captions', [])
+    %}
+        {% include 'components/images_section.html' %}
+    {% endwith %}
+</div>
+{% endif %}

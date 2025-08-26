@@ -28,6 +28,11 @@
             {% include 'components/description.html' %}
         {% endwith %}
 
+        <!-- Типичные особенности -->
+        {% with meta=card.meta %}
+            {% include 'components/typical_features.html' %}
+        {% endwith %}
+
         <!-- Клинические показания -->
         {% with meta=card.meta %}
             {% include 'components/clinical_indications.html' %}
@@ -66,6 +71,11 @@
         <!-- Ключи -->
         {% with meta=card.meta %}
             {% include 'components/keywords.html' %}
+        {% endwith %}
+
+        <!-- Блок с картинками -->
+        {% with meta=card.meta %}
+            {% include 'components/images_block.html' %}
         {% endwith %}
 
         <!-- Характеристика -->

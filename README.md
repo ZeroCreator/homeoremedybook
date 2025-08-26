@@ -73,8 +73,13 @@ group:
 key_characteristic: |
   ###
 
-description:
-  -
+typical_features:
+typical_features_images:
+typical_features_captions:
+
+description: |
+description_images:
+description_captions:
 
 clinical_indications: |
 
@@ -108,6 +113,9 @@ keywords:
   - 
 keywords_images: 
 keywords_captions:
+
+images_block:
+images_block_captions:
 
 characteristic: |
 characteristic_images: 

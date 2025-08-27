@@ -1,29 +1,34 @@
-{% if images is defined and images %}
-    {% if images is string or images|length == 1 %}
-    <!-- Одна картинка по центру -->
-    <div class="section-image-wrapper single-image">
-        <img src="{{ url_for('static', filename='images/' + (images if images is string else images[0])) }}"
-             alt="Изображение"
-             class="section-image">
-        {% if captions is defined and captions and (captions is string or captions|length >= 1) %}
-        <p class="image-caption">
-            {{ captions if captions is string else captions[0] }}
-        </p>
-        {% endif %}
-    </div>
-    {% else %}
-    <!-- Две картинки в ряд -->
-    <div class="section-images-wrapper dual-images">
-        {% for img in images %}
-        <div class="dual-image-container">
-            <img src="{{ url_for('static', filename='images/' + img) }}"
-                 alt="Изображение {{ loop.index }}"
+<div class="images-block-container">
+    {% if images is defined and images %}
+        {% if images is string or images|length == 1 %}
+        <!-- Одиночное изображение -->
+        <div class="section-image-wrapper single-image">
+            <img src="{{ url_for('static', filename='images/' + (images if images is string else images[0])) }}"
+                 alt="Изображение"
                  class="section-image">
-            {% if captions is defined and captions and captions|length > loop.index0 %}
-            <p class="image-caption">{{ captions[loop.index0] }}</p>
+            {% if captions is defined and captions and (captions is string or captions|length >= 1) %}
+            <p class="image-caption">
+                {{ captions if captions is string else captions[0] }}
+            </p>
             {% endif %}
         </div>
-        {% endfor %}
-    </div>
+        {% else %}
+        <!-- Несколько изображений -->
+        {% set image_count = images|length %}
+        <div class="images-grid {% if image_count % 2 == 0 %}even-layout{% else %}odd-layout{% endif %}">
+            {% for img in images %}
+            <div class="image-item">
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename='images/' + img) }}"
+                         alt="Изображение {{ loop.index }}"
+                         class="section-image">
+                </div>
+                {% if captions is defined and captions and captions|length > loop.index0 %}
+                <p class="image-caption">{{ captions[loop.index0] }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
     {% endif %}
-{% endif %}
+</div>

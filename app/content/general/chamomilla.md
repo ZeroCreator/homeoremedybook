@@ -175,6 +175,7 @@ keywords_images:
 keywords_captions:
 
 images_block:
+  - chamomilla-9.png
   - chamomilla-1.png
   - chamomilla-2.png
   - chamomilla-3.png

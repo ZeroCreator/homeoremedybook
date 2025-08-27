@@ -12,10 +12,23 @@
             </p>
             {% endif %}
         </div>
+        {% elif images|length == 2 %}
+        <!-- Два изображения -->
+        <div class="section-images-wrapper dual-images">
+            {% for img in images %}
+            <div class="dual-image-container">
+                <img src="{{ url_for('static', filename='images/' + img) }}"
+                     alt="Изображение {{ loop.index }}"
+                     class="section-image">
+                {% if captions is defined and captions and captions|length > loop.index0 %}
+                <p class="image-caption">{{ captions[loop.index0] }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
         {% else %}
-        <!-- Несколько изображений -->
-        {% set image_count = images|length %}
-        <div class="images-grid {% if image_count % 2 == 0 %}even-layout{% else %}odd-layout{% endif %}">
+        <!-- Три и более изображения -->
+        <div class="images-grid">
             {% for img in images %}
             <div class="image-item">
                 <div class="image-container">

@@ -19,11 +19,14 @@ image: aid_kit.jpg
 - Bacillus sycoccus C30
 - Belladonna C30
 - Calcarea carbonica C30
+- Cina C30, C200
 - Cuprum metallicum C30
 - Iris C30, C200
 - Kalium bichromicum C6
+- Lachesis C30, 
 - Licopodium C200, LM-1
 - Natrium muriaticum C30, C200, C1000
+- Nux vomica C30,
 - Sepia C30, C200, C1000
 - Staphisagria C30, C200
 - Stramonium C200

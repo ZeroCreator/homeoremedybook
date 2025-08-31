@@ -109,7 +109,7 @@ characteristic_captions:
 
 differential_diagnosis: |
 
-antidotes:
+antidotes: |
 
 custom_blocks:
   - title:

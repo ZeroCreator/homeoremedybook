@@ -2,6 +2,7 @@
 title: Hepar Sulphur Calcareum
 slug: hepar_sulphur
 category: general
+short_name: hep.
 cirillic: Гепар сульфур
 base_description: Гепар сульфур, Гепар сульфур калькареум
 image: hepar_sulphur.jpg

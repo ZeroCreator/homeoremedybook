@@ -2,6 +2,7 @@
 title: Rhus Toxicodendron
 slug: rhus_toxicodendron
 category: general
+short_name: rhus-t.
 cirillic: Рус токсикодендрон
 base_description: Семейство Сумаховые
 image: rhus-tox.jpg

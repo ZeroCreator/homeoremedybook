@@ -2,6 +2,7 @@
 title: Phosphorus
 slug: phosphorus
 category: general
+short_name: phos.
 cirillic: 
 base_description: Фосфор
 image: phosphor.jpg

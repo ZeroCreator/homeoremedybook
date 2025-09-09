@@ -2,6 +2,7 @@
 title: Nux Vomica
 slug: nux-vomica
 category: general
+short_name: nux-v.
 cirillic: Нукс вомика
 base_description: Чилибуха обыкновенная (рвотный орех). Семейство Логаниевые (Loganiaceae)
 image: nux-vomica.jpg

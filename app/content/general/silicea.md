@@ -2,6 +2,7 @@
 title: Silicea Terra
 slug: silicea
 category: general
+short_name: sil.
 cirillic: Силицея
 base_description: Кремний (Двуокись кремния) / Песок
 image: silicea.jpg

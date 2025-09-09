@@ -2,6 +2,7 @@
 title: Hypericum Perforatum
 slug: hypericum
 category: general
+short_name: hyper.
 cirillic: Гиперикум перфоратум
 base_description: Зверобой продырявленный. Семейство Зверобойные (Hypericaceae).
 image: hypericum.jpg

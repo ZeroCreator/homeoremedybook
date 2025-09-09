@@ -2,6 +2,7 @@
 title: Ruta Graveolens
 slug: ruta
 category: general
+short_name: ruta.
 cirillic: Рута
 base_description:  Ruta graveolens (Рута пахучая). Семество Рутовые (Rutacea)
 image: ruta.jpg

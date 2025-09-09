@@ -2,6 +2,7 @@
 title: Lycopodium Clavatum
 slug: licopodium
 category: general
+short_name: lyc.
 cirillic: Ликоподиум
 base_description: Плаун булавовидный, семейство Плауновые (Lycopodiaceae)
 image: licopodium.jpg

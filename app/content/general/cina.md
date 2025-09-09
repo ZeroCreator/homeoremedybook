@@ -2,6 +2,7 @@
 title: Cina Maritima
 slug: cina
 category: general
+short_name: cina.
 cirillic: Цина
 base_description: Artemisia cina. Полынь цитварная. Семейство Астровые (Asteraceae)
 image: cina.jpg

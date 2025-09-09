@@ -2,6 +2,7 @@
 title: Chamomilla Vulgaris
 slug: chamomilla
 category: general
+short_name: cham.
 cirillic: Хамомила
 base_description: Matricaria chamomilla, Ромашка аптечная. Семейство Астровые (Asteraceae).
 image: chamomilla.jpg

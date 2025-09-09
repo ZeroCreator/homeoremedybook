@@ -2,6 +2,7 @@
 title: Antimonium Tartaricum
 slug: antimonium
 category: general
+short_name: ant-t.
 cirillic: Антимониум тартарикум
 base_description: Антимониум тартарикум (Ant-t.), Рвотный камень 
 image: antimonium.jpg

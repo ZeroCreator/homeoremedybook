@@ -2,6 +2,7 @@
 title: Calcarea Carbonica
 slug: calcarea
 category: general
+short_name: calc.
 cirillic: Калькарея карбоника
 base_description: Устричная известь (скорлупа устриц)
 image: calcarea-carbonica.jpg

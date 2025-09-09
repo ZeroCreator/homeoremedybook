@@ -2,6 +2,7 @@
 title: China Officinalis
 slug: china
 category: general
+short_name: chin.
 cirillic: Хинна
 base_description: Кора хинного дерева. Семейство Мареновые
 image: china.jpg

@@ -1,7 +1,8 @@
 ---
-title: Mercurius Solubilis (merc.)
+title: Mercurius Solubilis
 slug: mercurius
 category: general
+short_name: merc.
 cirillic: Меркуриус солюбилис
 base_description: Ртуть (Hg)
 image: mercurius.jpg

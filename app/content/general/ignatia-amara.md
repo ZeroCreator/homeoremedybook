@@ -2,6 +2,7 @@
 title: Ignatia Amara
 slug: ignatia
 category: general
+short_name: ign.
 cirillic: Игнация амара
 base_description:  Игнация горькая, Чилибуха, бобы Святого Игнация. Семейство Логаниевые (Loganiaceae)
 image: ignatia-amara.jpg

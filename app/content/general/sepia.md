@@ -2,6 +2,7 @@
 title: Sepia Officinalis
 slug: sepia
 category: general
+short_name: sep.
 cirillic: Сепия
 base_description: Каракатица
 image: sepia.jpg

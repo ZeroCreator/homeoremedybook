@@ -2,6 +2,7 @@
 title: Lachesis Muta
 slug: lachesis
 category: general
+short_name: lach.
 cirillic: Лахезис
 base_description: Яд змеи сурукуку (Бушмейстер). Семейство Гадюковые (Viperidae)
 image: lachesis.png

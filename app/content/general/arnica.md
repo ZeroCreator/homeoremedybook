@@ -2,6 +2,7 @@
 title: Arnica Montana
 slug: arnica
 category: general
+short_name: arn.
 cirillic: Арника
 base_description: Арника горная, баранник горный. Семейство сложноцветные 
 image: arnica.webp

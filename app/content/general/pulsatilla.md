@@ -2,6 +2,7 @@
 title: Pulsatilla Pratensis
 slug: pulsatilla
 category: general
+short_name: puls.
 cirillic: Пульсатилла
 base_description: Прострел луговой. Семейство лютиковые 
 image: pulsatilla.jpg

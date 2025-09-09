@@ -2,6 +2,7 @@
 title: Staphysagria
 slug: staphysagria
 category: general
+short_name: staph.
 cirillic: Стафизагрия
 base_description: Дельфиниум. Семейство лютиковые 
 image: staphysagria.jpg

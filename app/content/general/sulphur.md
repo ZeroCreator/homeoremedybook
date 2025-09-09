@@ -2,6 +2,7 @@
 title: Sulphur
 slug: sulphur
 category: general
+short_name: sulph.
 cirillic: Сульфур
 base_description: Сера
 image: sulphur.jpg

@@ -62,6 +62,12 @@ body {
     margin-bottom: 0.5em;
 }
 
+.short_name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.17em;
+}
+
 /* ==================== ШАПКА И МЕНЮ ==================== */
 /* Баннер */
 .banner {

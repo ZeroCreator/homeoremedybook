@@ -2,6 +2,7 @@
 title: Ailanthus Glandulosa
 slug: ailantus
 category: general
+short_name: ail-g.
 cirillic: Айлантус грандулёза
 base_description: Айлант железистый, китайский ясень. Семество Симарубовые
 image: ailantus.jpg

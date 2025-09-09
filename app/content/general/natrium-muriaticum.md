@@ -2,6 +2,7 @@
 title: Natrium Muriaticum
 slug: natrium_muriaticum
 category: general
+short_name: nat-m.
 cirillic: Натриум муриатикум
 base_description: Хлорид натрия
 image: natrium_muriaticum.jpg

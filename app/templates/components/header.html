@@ -1,6 +1,6 @@
 {% if meta is defined %}
 <div class="card-header">
-    <h1>{{ meta.title }}</h1>
+    <h1>{{ meta.title }}{% if meta.short_name %} ({{ meta.short_name }}){% endif %}</h1>
     {% if meta.get('cirillic') %}
         <p class="cirillic">{{ meta.cirillic }}</p>
     {% endif %}

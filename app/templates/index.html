@@ -68,6 +68,9 @@
                         {% endif %}
                         <div class="card-preview-content">
                             <h3>{{ card.meta.title }}</h3>
+                            {% if card.meta.get('short_name') %}
+                                <p class="short_name">{{ card.meta.short_name }}</p>
+                            {% endif %}
                             {% if card.meta.get('base_description') %}
                                 <p class="cirillic">{{ card.meta.base_description }}</p>
                             {% endif %}

@@ -2,6 +2,7 @@
 title: Symphytum Officinale
 slug: symphytum
 category: general
+short_name: symph.
 cirillic: Симфитум
 base_description: Окопник лекарственный, бораго, огуречная трава. Семейство Бурачниковые (Boraginaceae)
 image: symphytum.jpg

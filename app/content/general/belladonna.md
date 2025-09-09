@@ -2,6 +2,7 @@
 title: Atropa Belladonna
 slug: belladonna
 category: general
+short_name: bell.
 cirillic: Белладонна
 base_description: Красавка, Сонная одурь, Бешеная ягода. Семейство Пасленовые (Solanaceae).
 image: belladonna.jpg

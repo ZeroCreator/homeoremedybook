@@ -2,6 +2,7 @@
 title: Bryonia Alba
 slug: bryonia
 category: general
+short_name: bry.
 cirillic: Бриония
 base_description: Переступень белый. Семейство Тыквенные
 image: bryonia.jpg

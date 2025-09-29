@@ -20,9 +20,11 @@ image: aid_kit.jpg
 - Belladonna C30
 - Calcarea carbonica C30
 - Cina C30, C200
+- Coffea cruda C6
 - Cuprum metallicum C30
 - Iris C30, C200
 - Kalium bichromicum C6
+- Kalium carbonicum LM-6
 - Lachesis C30, 
 - Licopodium C200, LM-1
 - Natrium muriaticum C30, C200, C1000
@@ -30,9 +32,11 @@ image: aid_kit.jpg
 - Sepia C30, C200, C1000
 - Staphisagria C30, C200
 - Stramonium C200
+- Strontium carbonicum C200
 - Sulphur LM-1
+- Symphytum C30
 - Rhus toxicodendron C30, C200
-- Ruta C30
+- Ruta C6, C30
 
 **Доктор Н**
 

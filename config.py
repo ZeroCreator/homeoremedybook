@@ -8,7 +8,7 @@ class Config:
     BASE_DIR = Path(__file__).resolve().parent  # Корень проекта
 
     # Пути для Flask
-    STATIC_DIR = BASE_DIR / 'public'
+    STATIC_DIR = BASE_DIR / 'public' / 'static'
     TEMPLATE_DIR = BASE_DIR / 'app' / 'templates'
 
     # Пути к контенту

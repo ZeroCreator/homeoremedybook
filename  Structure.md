@@ -148,3 +148,5 @@ sources:
 sources:
   - text: Материалы профкурса Via Homeopatica
     url: https://viahomeopatica.ru/
+  - Free Materia Medica books
+    url: https://www.materiamedica.info/en/free-materia-medica-books.php

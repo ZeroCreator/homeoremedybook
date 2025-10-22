@@ -14,11 +14,12 @@ image: aid_kit.jpg
 
 **Гутта**
 
-- Arnica montana C30, C200
+- Aconit C30
+- Arnica montana C30, C200, C1000
 - Arsenicum album C30, C200
 - Bacillus sycoccus C30
 - Belladonna C30
-- Calcarea carbonica C30
+- Calcarea carbonica C30, C200
 - Cina C30, C200
 - Coffea cruda C6
 - Cuprum metallicum C30

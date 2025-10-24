@@ -7,7 +7,7 @@ cirillic: Калиум карбоникум
 base_description: Карбонат калия, Углекислый калий K2CO3
 image: kali_carbonicum.jpg
 miasm: Сикоз, Туберкулез
-group: Минералы
+group: Соли
 
 key_characteristic: |
   ### Соль, теряющая свою кристаллическую решётку.

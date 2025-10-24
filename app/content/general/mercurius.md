@@ -7,7 +7,7 @@ cirillic: Меркуриус солюбилис
 base_description: Ртуть (Hg)
 image: mercurius.jpg
 miasm: Сифилис, Сикоз
-group: Минералы
+group: Металлы
 
 key_characteristic: |
   ### Разрушение, изъязвление, коррупция.

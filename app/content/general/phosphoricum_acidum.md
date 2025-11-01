@@ -637,6 +637,7 @@ personality_captions:
 сultural_аrchetypes_captions:
   - Дуэйн из «Маленькой мисс Счастье» («Little Miss Sunshine», 2006)
   - Старый рыбак - Тивадар Костки Чонтвари
+
 sources:
   - text: Kiberis - Фатак С.Р.
     url: https://kiberis.ru/?p=165&a=21 

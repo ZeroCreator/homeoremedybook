@@ -2,119 +2,426 @@
 
 {% block title %}{{ card.meta.title }}{% endblock %}
 
+{% block extra_head %}
+<style>
+.card-navigation {
+    margin-top: 20px;
+}
+
+.card-menu {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.card-menu li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.card-menu li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.nav-link {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.nav-link:hover {
+    background-color: #f5f5f5;
+    border-left-color: #007bff;
+    color: #007bff;
+}
+
+/* Стили для активной ссылки в навигации */
+.nav-link.active {
+    background-color: #e9ecef;
+    border-left-color: #007bff;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.card-menu li.active::before {
+    background-color: #007bff;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Анимация плавной прокрутки */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Отступ для якорей с учетом фиксированного хедера */
+.card-detail section {
+    scroll-margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+    .card-navigation {
+        display: none;
+    }
+}
+</style>
+{% endblock %}
+
 {% block left_menu %}
     <a href="{{ url_for('index') }}" class="back-link">← Назад к списку препаратов</a>
+
+    <!-- Навигационное меню по блокам карточки -->
+    <nav class="card-navigation">
+        <ul class="card-menu">
+            {% if card.meta.key_characteristic %}
+            <li><a href="#key_characteristic" class="nav-link">Ключевая характеристика</a></li>
+            {% endif %}
+
+            {% if card.meta.description %}
+            <li><a href="#description" class="nav-link">Описание</a></li>
+            {% endif %}
+
+            {% if card.meta.typical_features %}
+            <li><a href="#typical_features" class="nav-link">Типичные особенности</a></li>
+            {% endif %}
+
+            {% if card.meta.clinical_indications %}
+            <li><a href="#clinical_indications" class="nav-link">Клинические показания</a></li>
+            {% endif %}
+
+            {% if card.meta.etiology %}
+            <li><a href="#etiology" class="nav-link">Этиология</a></li>
+            {% endif %}
+
+            {% if card.meta.remedy_miasms %}
+            <li><a href="#remedy_miasms" class="nav-link">Описание миазмов препарата</a></li>
+            {% endif %}
+
+            {% if card.meta.symptoms_by_system %}
+            <li><a href="#symptoms_by_system" class="nav-link">Физические симптомы по системам</a></li>
+            {% endif %}
+
+            {% if card.meta.symptoms %}
+            <li><a href="#symptoms" class="nav-link">Симптомы</a></li>
+            {% endif %}
+
+            {% if card.meta.application %}
+            <li><a href="#application" class="nav-link">Сферы применения</a></li>
+            {% endif %}
+
+            {% if card.meta.modalities %}
+            <li><a href="#modalities" class="nav-link">Модальности</a></li>
+            {% endif %}
+
+            {% if card.meta.keywords %}
+            <li><a href="#keywords" class="nav-link">Ключи</a></li>
+            {% endif %}
+
+            {% if card.meta.images %}
+            <li><a href="#images_block" class="nav-link">Иллюстрации</a></li>
+            {% endif %}
+
+            {% if card.meta.characteristic %}
+            <li><a href="#characteristic" class="nav-link">Характеристика</a></li>
+            {% endif %}
+
+            {% if card.meta.differential_diagnosis %}
+            <li><a href="#differential_diagnosis" class="nav-link">Дифференциальная диагностика</a></li>
+            {% endif %}
+
+            {% if card.meta.antidotes %}
+            <li><a href="#antidotes" class="nav-link">Антидоты</a></li>
+            {% endif %}
+
+            {% if card.meta.personality %}
+            <li><a href="#personality" class="nav-link">Тип личности</a></li>
+            {% endif %}
+
+            {% if card.meta.cultural_archetypes %}
+            <li><a href="#cultural_archetypes" class="nav-link">Культурные архетипы</a></li>
+            {% endif %}
+
+            {% if card.meta.custom_blocks %}
+            <li><a href="#custom_blocks" class="nav-link">Дополнительная информация</a></li>
+            {% endif %}
+
+            {% if card.meta.sources %}
+            <li><a href="#sources" class="nav-link">Источники</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 {% endblock %}
 
 {% block content %}
     <div class="card-detail">
         <!-- Заголовок -->
-        {% with meta=card.meta %}
-            {% include 'components/header.html' %}
-        {% endwith %}
+        <div id="header">
+            {% with meta=card.meta %}
+                {% include 'components/header.html' %}
+            {% endwith %}
+        </div>
 
         <!-- Мета-информация -->
-        {% with meta=card.meta %}
-            {% include 'components/meta.html' %}
-        {% endwith %}
+        <div id="meta">
+            {% with meta=card.meta %}
+                {% include 'components/meta.html' %}
+            {% endwith %}
+        </div>
 
         <!-- Ключевая характеристика -->
-        {% with meta=card.meta %}
-            {% include 'components/key_characteristic.html' %}
-        {% endwith %}
+        {% if card.meta.key_characteristic %}
+        <section id="key_characteristic">
+            {% with meta=card.meta %}
+                {% include 'components/key_characteristic.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Описание -->
-        {% with meta=card.meta %}
-            {% include 'components/description.html' %}
-        {% endwith %}
+        {% if card.meta.description %}
+        <section id="description">
+            {% with meta=card.meta %}
+                {% include 'components/description.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Типичные особенности -->
-        {% with meta=card.meta %}
-            {% include 'components/typical_features.html' %}
-        {% endwith %}
+        {% if card.meta.typical_features %}
+        <section id="typical_features">
+            {% with meta=card.meta %}
+                {% include 'components/typical_features.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Клинические показания -->
-        {% with meta=card.meta %}
-            {% include 'components/clinical_indications.html' %}
-        {% endwith %}
+        {% if card.meta.clinical_indications %}
+        <section id="clinical_indications">
+            {% with meta=card.meta %}
+                {% include 'components/clinical_indications.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Этиология -->
-        {% with meta=card.meta %}
-            {% include 'components/etiology.html' %}
-        {% endwith %}
+        {% if card.meta.etiology %}
+        <section id="etiology">
+            {% with meta=card.meta %}
+                {% include 'components/etiology.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Описание миазмов препарата-->
-        {% with meta=card.meta %}
-            {% include 'components/remedy_miasms.html' %}
-        {% endwith %}
+        {% if card.meta.remedy_miasms %}
+        <section id="remedy_miasms">
+            {% with meta=card.meta %}
+                {% include 'components/remedy_miasms.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Физические симптомы по системам -->
-        {% with meta=card.meta %}
-            {% include 'components/symptoms_by_system.html' %}
-        {% endwith %}
+        {% if card.meta.symptoms_by_system %}
+        <section id="symptoms_by_system">
+            {% with meta=card.meta %}
+                {% include 'components/symptoms_by_system.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Симптомы -->
-        {% with meta=card.meta %}
-            {% include 'components/symptoms.html' %}
-        {% endwith %}
+        {% if card.meta.symptoms %}
+        <section id="symptoms">
+            {% with meta=card.meta %}
+                {% include 'components/symptoms.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Сферы применения -->
-        {% with meta=card.meta %}
-            {% include 'components/application.html' %}
-        {% endwith %}
+        {% if card.meta.application %}
+        <section id="application">
+            {% with meta=card.meta %}
+                {% include 'components/application.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Модальности -->
-        {% with meta=card.meta %}
-            {% include 'components/modalities.html' %}
-        {% endwith %}
+        {% if card.meta.modalities %}
+        <section id="modalities">
+            {% with meta=card.meta %}
+                {% include 'components/modalities.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Ключи -->
-        {% with meta=card.meta %}
-            {% include 'components/keywords.html' %}
-        {% endwith %}
+        {% if card.meta.keywords %}
+        <section id="keywords">
+            {% with meta=card.meta %}
+                {% include 'components/keywords.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Иллюстрации -->
-        {% with meta=card.meta %}
-            {% include 'components/images_block.html' %}
-        {% endwith %}
+        {% if card.meta.images %}
+        <section id="images_block">
+            {% with meta=card.meta %}
+                {% include 'components/images_block.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Характеристика -->
-        {% with meta=card.meta %}
-            {% include 'components/characteristic.html' %}
-        {% endwith %}
+        {% if card.meta.characteristic %}
+        <section id="characteristic">
+            {% with meta=card.meta %}
+                {% include 'components/characteristic.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Дифференциальная диагностика -->
-        {% with meta=card.meta %}
-            {% include 'components/differential_diagnosis.html' %}
-        {% endwith %}
+        {% if card.meta.differential_diagnosis %}
+        <section id="differential_diagnosis">
+            {% with meta=card.meta %}
+                {% include 'components/differential_diagnosis.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Антидоты -->
-        {% with meta=card.meta %}
-            {% include 'components/antidotes.html' %}
-        {% endwith %}
+        {% if card.meta.antidotes %}
+        <section id="antidotes">
+            {% with meta=card.meta %}
+                {% include 'components/antidotes.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Тип личности -->
-        {% with meta=card.meta %}
-            {% include 'components/personality.html' %}
-        {% endwith %}
+        {% if card.meta.personality %}
+        <section id="personality">
+            {% with meta=card.meta %}
+                {% include 'components/personality.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Культурные архетипы -->
-        {% with meta=card.meta %}
-            {% include 'components/сultural_аrchetypes.html' %}
-        {% endwith %}
+        {% if card.meta.cultural_archetypes %}
+        <section id="cultural_archetypes">
+            {% with meta=card.meta %}
+                {% include 'components/сultural_аrchetypes.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Дополнительная информация -->
-        {% with meta=card.meta %}
-            {% include 'components/custom_blocks.html' %}
-        {% endwith %}
+        {% if card.meta.custom_blocks %}
+        <section id="custom_blocks">
+            {% with meta=card.meta %}
+                {% include 'components/custom_blocks.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <!-- Источники -->
-        {% with meta=card.meta %}
-            {% include 'components/sources.html' %}
-        {% endwith %}
+        {% if card.meta.sources %}
+        <section id="sources">
+            {% with meta=card.meta %}
+                {% include 'components/sources.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
 
         <div class="card-html-content">
             {{ card.html|safe }}
         </div>
     </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const menuItems = document.querySelectorAll('.card-menu li');
+
+    // Функция для плавной прокрутки
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // Обновляем активную ссылку
+                navLinks.forEach(l => l.classList.remove('active'));
+                menuItems.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+                this.parentElement.classList.add('active');
+            }
+        });
+    });
+
+    // Функция для подсветки активного раздела при скролле
+    function highlightActiveSection() {
+        const sections = document.querySelectorAll('#header, #meta, section[id]');
+        const scrollPos = window.scrollY + 100;
+
+        let currentActive = null;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                currentActive = sectionId;
+            }
+        });
+
+        // Обновляем активные ссылки
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentActive) {
+                link.classList.add('active');
+                link.parentElement.classList.add('active');
+            } else {
+                link.parentElement.classList.remove('active');
+            }
+        });
+    }
+
+    // Слушаем событие скролла
+    window.addEventListener('scroll', highlightActiveSection);
+    // Вызываем сразу для установки начального состояния
+    highlightActiveSection();
+});
+</script>
 {% endblock %}

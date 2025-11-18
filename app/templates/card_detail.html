@@ -4,6 +4,21 @@
 
 {% block extra_head %}
 <style>
+
+.remedy-title-in-menu {
+    margin: 20px 0 15px 0;
+    padding: 0 12px;
+}
+
+.remedy-title-in-menu h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
 .card-navigation {
     margin-top: 20px;
 }
@@ -86,6 +101,11 @@ html {
 
 {% block left_menu %}
     <a href="{{ url_for('index') }}" class="back-link">← Назад к списку препаратов</a>
+
+     <!-- Название препарата в левом меню -->
+    <div class="remedy-title-in-menu">
+        <h3>{{ card.meta.title }}</h3>
+    </div>
 
     <!-- Навигационное меню по блокам карточки -->
     <nav class="card-navigation">

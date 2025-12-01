@@ -1,10 +1,10 @@
-{% if meta is defined and meta.get('сultural_аrchetypes') %}
+{% if meta is defined and meta.get('cultural_archetypes') %}
     <div class="personality-container">
         {% with
             title='Культурные архетипы',
-            content=meta.сultural_аrchetypes,
-            images=meta.get('сultural_аrchetypes_images'),
-            captions=meta.get('сultural_аrchetypes_captions')
+            content=meta.cultural_archetypes,
+            images=meta.get('cultural_archetypes_images'),
+            captions=meta.get('cultural_archetypes_captions')
         %}
             {% include 'components/section.html' %}
         {% endwith %}

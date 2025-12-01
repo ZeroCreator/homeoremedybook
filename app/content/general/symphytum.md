@@ -106,9 +106,9 @@ personality: |
 personality_images:
 personality_captions:
 
-сultural_аrchetypes: |
-сultural_аrchetypes_images:
-сultural_аrchetypes_captions:
+cultural_archetypes: |
+cultural_archetypes_images:
+cultural_archetypes_captions:
 
 sources:
   - text:

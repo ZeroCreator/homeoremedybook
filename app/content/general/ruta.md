@@ -142,7 +142,7 @@ personality_images:
 personality_captions:
   - Мартин Лютер
 
-сultural_аrchetypes: |
+cultural_archetypes: |
   **Тип "Травмированного бойца":** <br> 
   - Упорный, но изношенный физически от перегрузок  <br>
   - Раздражителен при напоминании о его ограничениях  <br>
@@ -237,8 +237,8 @@ personality_captions:
   Страх повторной травмы как ограничитель жизни (Доктор Ливси)<br>
     
   ❗️ Все примеры иллюстрируют триаду Ruta: травма соединительной ткани → утренняя скованность → паника при перегрузках.
-сultural_аrchetypes_images:
-сultural_аrchetypes_captions:
+cultural_archetypes_images:
+cultural_archetypes_captions:
 
 sources:
   - text: Новосибирский гомеопатический центр

@@ -305,7 +305,7 @@ html {
         {% endif %}
 
         <!-- Иллюстрации -->
-        {% if card.meta.images %}
+        {% if card.meta.images_block %}
         <section id="images_block">
             {% with meta=card.meta %}
                 {% include 'components/images_block.html' %}

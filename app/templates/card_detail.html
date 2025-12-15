@@ -134,12 +134,12 @@ html {
             <li><a href="#remedy_miasms" class="nav-link">Описание миазмов препарата</a></li>
             {% endif %}
 
-            {% if card.meta.symptoms_by_system %}
-            <li><a href="#symptoms_by_system" class="nav-link">Физические симптомы по системам</a></li>
-            {% endif %}
-
             {% if card.meta.symptoms %}
             <li><a href="#symptoms" class="nav-link">Симптомы</a></li>
+            {% endif %}
+
+            {% if card.meta.symptoms_by_system %}
+            <li><a href="#symptoms_by_system" class="nav-link">Физические симптомы по системам</a></li>
             {% endif %}
 
             {% if card.meta.application %}
@@ -167,7 +167,11 @@ html {
             {% endif %}
 
             {% if card.meta.antidotes %}
-            <li><a href="#antidotes" class="nav-link">Антидоты</a></li>
+            <li><a href="#antidotes" class="nav-link">Взаимосвязи</a></li>
+            {% endif %}
+
+            {% if card.meta.custom_blocks %}
+            <li><a href="#custom_blocks" class="nav-link">Дополнительная информация</a></li>
             {% endif %}
 
             {% if card.meta.personality %}
@@ -176,10 +180,6 @@ html {
 
             {% if card.meta.cultural_archetypes %}
             <li><a href="#cultural_archetypes" class="nav-link">Культурные архетипы</a></li>
-            {% endif %}
-
-            {% if card.meta.custom_blocks %}
-            <li><a href="#custom_blocks" class="nav-link">Дополнительная информация</a></li>
             {% endif %}
 
             {% if card.meta.sources %}
@@ -259,20 +259,20 @@ html {
         </section>
         {% endif %}
 
+        <!-- Характерные симптомы -->
+        {% if card.meta.symptoms %}
+        <section id="symptoms">
+            {% with meta=card.meta %}
+                {% include 'components/symptoms.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
+
         <!-- Физические симптомы по системам -->
         {% if card.meta.symptoms_by_system %}
         <section id="symptoms_by_system">
             {% with meta=card.meta %}
                 {% include 'components/symptoms_by_system.html' %}
-            {% endwith %}
-        </section>
-        {% endif %}
-
-        <!-- Симптомы -->
-        {% if card.meta.symptoms %}
-        <section id="symptoms">
-            {% with meta=card.meta %}
-                {% include 'components/symptoms.html' %}
             {% endwith %}
         </section>
         {% endif %}
@@ -331,11 +331,20 @@ html {
         </section>
         {% endif %}
 
-        <!-- Антидоты -->
+        <!-- Взаимосвязи -->
         {% if card.meta.antidotes %}
         <section id="antidotes">
             {% with meta=card.meta %}
                 {% include 'components/antidotes.html' %}
+            {% endwith %}
+        </section>
+        {% endif %}
+
+        <!-- Дополнительная информация -->
+        {% if card.meta.custom_blocks %}
+        <section id="custom_blocks">
+            {% with meta=card.meta %}
+                {% include 'components/custom_blocks.html' %}
             {% endwith %}
         </section>
         {% endif %}
@@ -354,15 +363,6 @@ html {
         <section id="cultural_archetypes">
             {% with meta=card.meta %}
                 {% include 'components/cultural_archetypes.html' %}
-            {% endwith %}
-        </section>
-        {% endif %}
-
-        <!-- Дополнительная информация -->
-        {% if card.meta.custom_blocks %}
-        <section id="custom_blocks">
-            {% with meta=card.meta %}
-                {% include 'components/custom_blocks.html' %}
             {% endwith %}
         </section>
         {% endif %}

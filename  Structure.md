@@ -45,6 +45,7 @@
 Дифференциальная диагностика (differential_diagnosis)
 Взаимосвязи (antidotes)
 Дополнительная информация (лирические описания и стихотворения) (custom_blocks)
+Делюзии (delusions)
 Тип личности (пример исторической личности) (personality)
 Культурные архетипы (Ключевые черты препарата в кино, мультфильмах и литературе) (cultural_archetypes)
 Источники (sources)
@@ -120,6 +121,8 @@ custom_blocks:
     image:
     alt:
     content: |
+
+delusions: |
 
 personality: |
 personality_images:

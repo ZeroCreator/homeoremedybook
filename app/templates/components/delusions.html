@@ -1,0 +1,10 @@
+{% if meta is defined and meta.get('delusions') %}
+    {% with
+        title='Делюзии',
+        content=meta.delusions,
+        images=meta.get('delusions_images'),
+        captions=meta.get('delusions_captions')
+    %}
+        {% include 'components/section.html' %}
+    {% endwith %}
+{% endif %}
